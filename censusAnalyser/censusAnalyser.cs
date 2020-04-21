@@ -1,10 +1,11 @@
 ﻿using System;
-
+using System.IO;
 namespace censusAnalyser
 {
-    class censusAnalyser
+    class CensusAnalyser
     {
-        static void Main(string[] args)
+        
+        public static void Main(string[] args)
         {
             Console.WriteLine("!!!Welcome to census analyser!!!");
         }
