@@ -31,6 +31,10 @@ namespace censusAnalyser
         {
             try
             {
+                if (!filePath.EndsWith(".csv"))
+                    throw new CensusAnalyserException("File Type Incorrect", CensusAnalyserException.Exception_type.File_Type_Incorrect);
+                if (filePath != "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCensusData.csv")
+                    throw new CensusAnalyserException("File Not Found", CensusAnalyserException.Exception_type.File_Not_Found);
                 //Read record one by one in csv file
                 CsvReader csv = new CsvReader(new StreamReader(filePath));
                 {
@@ -38,11 +42,7 @@ namespace censusAnalyser
                         numberOfRecord++;
                 }
             }
-            catch (FileNotFoundException)
-            {
-                throw new CensusAnalyserException("file path incorrect");
-            }
-            catch(CensusAnalyserException exception)
+            catch (CensusAnalyserException exception)
             {
                 return exception.Message;
             }

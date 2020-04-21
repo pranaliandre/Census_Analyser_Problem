@@ -28,10 +28,21 @@ namespace censusAnalyserTest
         [Test]
         public void CheckCsvFileIfIncorrect_ReturnthCensusAnalyserException()
         {
-            object expected = "file path incorrect";
+            object expected = "File Not Found";
             string filePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/CensusData.csv";
-            var actual = Assert.Throws<CensusAnalyserException>(() => object_Analyser.NumberOfRecord(filePath));
-            Assert.AreEqual(expected, actual.GetMessage);
+            object actual = object_Analyser.NumberOfRecord(filePath);
+            Assert.AreEqual(expected, actual);
+        }
+        /// <summary>
+        /// Test for Given file type incorrect return a custom exception
+        /// </summary>
+        [Test]
+        public void CheckCsvFileTypeIncorrect_ReturnthCensusAnalyserException()
+        {
+            object expected = "File Type Incorrect";
+            string filePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCensusData.txt";
+            object actual = object_Analyser.NumberOfRecord(filePath);
+            Assert.AreEqual(expected, actual);
         }
     }
 }
