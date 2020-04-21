@@ -13,6 +13,7 @@ namespace censusAnalyser
         /// </summary>
         public string filePath;
         public int numberOfRecord = 0;
+
         /// <summary>
         ///parameterized constructor is used to provide different values to the objects
         /// </summary>

@@ -21,6 +21,7 @@ namespace censusAnalyserTest
             object actual = object_Analyser.NumberOfRecord(filePath);
             Assert.AreEqual(expected, actual);
         }
+
         /// <summary>
         /// Test for Given the CSV File if incorrect Returns a custom Exception
         /// </summary>
