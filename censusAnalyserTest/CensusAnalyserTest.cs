@@ -17,8 +17,9 @@ namespace censusAnalyserTest
         public void CheckStateCensus_NumberOfRecord()
         {
             object expected = 29;
+            char delimeter = ',';
             StateCensusAnalyser object_Analyser = new StateCensusAnalyser(filePath);
-            object actual = object_Analyser.NumberOfRecord(filePath);
+            object actual = object_Analyser.NumberOfRecord(filePath,delimeter);
             Assert.AreEqual(expected, actual);
         }
 
@@ -29,8 +30,9 @@ namespace censusAnalyserTest
         public void CheckCsvFileIfIncorrect_ReturnthCensusAnalyserException()
         {
             object expected = "File Not Found";
+            char delimeter = ',';
             string filePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/CensusData.csv";
-            object actual = object_Analyser.NumberOfRecord(filePath);
+            object actual = object_Analyser.NumberOfRecord(filePath,delimeter);
             Assert.AreEqual(expected, actual);
         }
         /// <summary>
@@ -40,9 +42,23 @@ namespace censusAnalyserTest
         public void CheckCsvFileTypeIncorrect_ReturnthCensusAnalyserException()
         {
             object expected = "File Type Incorrect";
+            char delimeter = ',';
             string filePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCensusData.txt";
-            object actual = object_Analyser.NumberOfRecord(filePath);
+            object actual = object_Analyser.NumberOfRecord(filePath, delimeter);
             Assert.AreEqual(expected, actual);
         }
+        /// <summary>
+        /// Test for delimeter incorrect return a custom exception
+        /// </summary>
+        [Test]
+        public void DelimeterIncorrect_ReturnthCensusAnalyserException()
+        {
+            object expected = "Delimeter incorrect";
+            char delimeter = '.';
+            string filePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCensusData.csv";
+            object actual = object_Analyser.NumberOfRecord(filePath,delimeter);
+            Assert.AreEqual(expected, actual);
+        }
+
     }
 }

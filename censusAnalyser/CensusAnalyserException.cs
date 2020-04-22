@@ -6,7 +6,8 @@ namespace censusAnalyser
         public enum Exception_type
         {
             File_Not_Found,
-            File_Type_Incorrect
+            File_Type_Incorrect,
+            Delimeter_Incorrect
         }
         /// <summary>
         ///Variable
