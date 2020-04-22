@@ -21,6 +21,7 @@ namespace censusAnalyser
         {
             this.filePath = path;
         }
+
         /// <summary>
         /// Method to check number of record in file
         /// </summary>

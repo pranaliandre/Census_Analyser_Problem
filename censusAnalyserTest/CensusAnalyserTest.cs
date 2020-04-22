@@ -60,7 +60,7 @@ namespace censusAnalyserTest
             char delimeter = '.';
             string[] header = { "State", "Population", "AreaInSqKm", "DensityPerSqKm" };
             string filePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCensusData.csv";
-            object actual = object_Analyser.NumberOfRecord(filePath,delimeter,header);
+            object actual = object_Analyser.NumberOfRecord(filePath, delimeter, header);
             Assert.AreEqual(expected, actual);
         }
         /// <summary>
@@ -71,7 +71,7 @@ namespace censusAnalyserTest
         {
             object expected = "Header incorrect";
             char delimeter = ',';
-            string[] header = { "SrNo", "State", "AreaInSqkm", "Mobile", "Statecode" };
+            string[] header = { "SrNo", "State", "AreaInSqkm", "MobileNo", "Statecode" };
             string filePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCensusData.csv";
             object actual = object_Analyser.NumberOfRecord(filePath, delimeter,header);
             Assert.AreEqual(expected, actual);

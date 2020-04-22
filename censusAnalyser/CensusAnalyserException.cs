@@ -10,6 +10,7 @@ namespace censusAnalyser
             Delimeter_Incorrect,
             Header_Incorrect
         }
+
         /// <summary>
         ///Variable
         /// </summary>
