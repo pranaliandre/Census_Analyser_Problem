@@ -86,7 +86,9 @@ namespace censusAnalyserTest
         {
             object expected = 37;
             char delimeter = ',';
-            object actual = objectStateCode_Analyser.NumberOfrecordStateCodeFile(stateCodeFilePath, delimeter);
+            string[] header = { "SrNo", "State", "Name" , "TIN", "StateCode" };
+            string stateCodeFilePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCode.csv";
+            object actual = objectStateCode_Analyser.NumberOfrecordStateCodeFile(stateCodeFilePath,delimeter,header);
             Assert.AreEqual(expected, actual);
         }
         /// <summary>
@@ -97,8 +99,9 @@ namespace censusAnalyserTest
         {
             object expected = "File Not Found";
             char delimeter = ',';
+            string[] header = { "SrNo", "State", "Name", "TIN", "StateCode" };
             string stateCodeFilePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCodecsv.csv";
-            object actual = objectStateCode_Analyser.NumberOfrecordStateCodeFile(stateCodeFilePath, delimeter);
+            object actual = objectStateCode_Analyser.NumberOfrecordStateCodeFile(stateCodeFilePath, delimeter,header);
             Assert.AreEqual(expected, actual);
         }
         /// <summary>
@@ -109,8 +112,9 @@ namespace censusAnalyserTest
         {
             object expected = "File Type Incorrect";
             char delimeter = ',';
+            string[] header = { "SrNo", "State", "Name", "TIN", "StateCode" };
             string stateCodeFilePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCode.txt";
-            object actual = objectStateCode_Analyser.NumberOfrecordStateCodeFile(stateCodeFilePath, delimeter);
+            object actual = objectStateCode_Analyser.NumberOfrecordStateCodeFile(stateCodeFilePath, delimeter,header);
             Assert.AreEqual(expected, actual);
         }
         /// <summary>
@@ -121,8 +125,22 @@ namespace censusAnalyserTest
         {
             object expected = "Delimeter incorrect";
             char delimeter = '.';
+            string[] header = { "SrNo", "State", "Name", "TIN", "StateCode" };
             string stateCodeFilePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCode.csv";
-            object actual = objectStateCode_Analyser.NumberOfrecordStateCodeFile(stateCodeFilePath, delimeter);
+            object actual = objectStateCode_Analyser.NumberOfrecordStateCodeFile(stateCodeFilePath, delimeter,header);
+            Assert.AreEqual(expected, actual);
+        }
+        /// <summary>
+        /// Test for state code Header incorrect return a custom exception
+        /// </summary>
+        [Test]
+        public void StateCodeCsvHeaderIncorrect_ReturnthCensusAnalyserException()
+        {
+            object expected = "Header incorrect";
+            char delimeter = ',';
+            string[] header = { "SrNo", "State", "Name", "Mobile", "Statecode" };
+            string stateCodeFilePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCode.csv";
+            object actual = objectStateCode_Analyser.NumberOfrecordStateCodeFile(stateCodeFilePath, delimeter, header);
             Assert.AreEqual(expected, actual);
         }
     }
