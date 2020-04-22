@@ -99,5 +99,16 @@ namespace censusAnalyserTest
             object actual = objectStateCode_Analyser.NumberOfrecordStateCodeFile(stateCodeFilePath);
             Assert.AreEqual(expected, actual);
         }
+        /// <summary>
+        /// Test for Given state code file type incorrect return a custom exception
+        /// </summary>
+        [Test]
+        public void CheckStateCodeCsvFileTypeIncorrect_ReturnthCensusAnalyserException()
+        {
+            object expected = "File Type Incorrect";
+            string stateCodeFilePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCode.txt";
+            object actual = objectStateCode_Analyser.NumberOfrecordStateCodeFile(stateCodeFilePath);
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
