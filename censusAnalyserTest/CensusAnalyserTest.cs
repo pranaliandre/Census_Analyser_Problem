@@ -77,5 +77,16 @@ namespace censusAnalyserTest
             object actual = object_Analyser.NumberOfRecord(filePath, delimeter,header);
             Assert.AreEqual(expected, actual);
         }
+        /// <summary>
+        /// Test for State Code CSV file check to ensure the number of record
+        /// </summary>
+        [Test]
+        public void CheckStateCodeFile_NumberOfRecord()
+        {
+            object expected = 37;
+            StateCodeAnalyser object_Analyser = new StateCodeAnalyser(stateCodeFilePath);
+            object actual = object_Analyser.NumberOfrecordStateCodeFile(stateCodeFilePath);
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
