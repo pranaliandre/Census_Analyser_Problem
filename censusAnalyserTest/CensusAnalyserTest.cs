@@ -6,6 +6,7 @@ namespace censusAnalyserTest
     {
         StateCensusAnalyser object_Analyser = new StateCensusAnalyser();
         public string filePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCensusData.csv";
+        public string stateCodeFilePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCode.csv";
         [SetUp]
         public void Setup()
         {
