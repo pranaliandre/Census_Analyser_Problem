@@ -18,8 +18,9 @@ namespace censusAnalyserTest
         {
             object expected = 29;
             char delimeter = ',';
+            string[] header = { "State", "Population", "AreaInSqKm", "DensityPerSqKm" };
             StateCensusAnalyser object_Analyser = new StateCensusAnalyser(filePath);
-            object actual = object_Analyser.NumberOfRecord(filePath,delimeter);
+            object actual = object_Analyser.NumberOfRecord(filePath,delimeter,header);
             Assert.AreEqual(expected, actual);
         }
 
@@ -31,8 +32,9 @@ namespace censusAnalyserTest
         {
             object expected = "File Not Found";
             char delimeter = ',';
+            string[] header = { "State", "Population", "AreaInSqKm", "DensityPerSqKm" };
             string filePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/CensusData.csv";
-            object actual = object_Analyser.NumberOfRecord(filePath,delimeter);
+            object actual = object_Analyser.NumberOfRecord(filePath,delimeter,header);
             Assert.AreEqual(expected, actual);
         }
         /// <summary>
@@ -43,8 +45,9 @@ namespace censusAnalyserTest
         {
             object expected = "File Type Incorrect";
             char delimeter = ',';
+            string[] header = { "State", "Population", "AreaInSqKm", "DensityPerSqKm" };
             string filePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCensusData.txt";
-            object actual = object_Analyser.NumberOfRecord(filePath, delimeter);
+            object actual = object_Analyser.NumberOfRecord(filePath, delimeter,header);
             Assert.AreEqual(expected, actual);
         }
         /// <summary>
@@ -55,10 +58,23 @@ namespace censusAnalyserTest
         {
             object expected = "Delimeter incorrect";
             char delimeter = '.';
+            string[] header = { "State", "Population", "AreaInSqKm", "DensityPerSqKm" };
             string filePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCensusData.csv";
-            object actual = object_Analyser.NumberOfRecord(filePath,delimeter);
+            object actual = object_Analyser.NumberOfRecord(filePath,delimeter,header);
             Assert.AreEqual(expected, actual);
         }
-
+        /// <summary>
+        /// Test for Header incorrect return a custom exception
+        /// </summary>
+        [Test]
+        public void HeaderIncorrect_ReturnthCensusAnalyserException()
+        {
+            object expected = "Header incorrect";
+            char delimeter = ',';
+            string[] header = { "SrNo", "State", "AreaInSqkm", "Mobile", "Statecode" };
+            string filePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCensusData.csv";
+            object actual = object_Analyser.NumberOfRecord(filePath, delimeter,header);
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

@@ -7,7 +7,8 @@ namespace censusAnalyser
         {
             File_Not_Found,
             File_Type_Incorrect,
-            Delimeter_Incorrect
+            Delimeter_Incorrect,
+            Header_Incorrect
         }
         /// <summary>
         ///Variable
