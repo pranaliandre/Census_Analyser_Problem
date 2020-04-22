@@ -12,6 +12,7 @@ namespace censusAnalyser
         /// </summary>
         public string stateCodeFilePath;
         public int StateCodeNumberOfrecord = 0;
+        public char delimeter;
         /// <summary>
         /// Parameterized condtructor
         /// </summary>
@@ -25,7 +26,7 @@ namespace censusAnalyser
         /// </summary>
         /// <param name="stateCodeFilePath"></param>
         /// <returns></returns>
-        public object NumberOfrecordStateCodeFile(string stateCodeFilePath)
+        public object NumberOfrecordStateCodeFile(string stateCodeFilePath,char in_delimeter)
         {
             try
             {
@@ -39,6 +40,12 @@ namespace censusAnalyser
                 //Read data one by one
                 while (csv.ReadNextRecord())
                     StateCodeNumberOfrecord++;
+                delimeter = csv.Delimiter;
+                //If delimeter are incorrect throw exception
+                if (!in_delimeter.Equals(delimeter))
+                {
+                    throw new CensusAnalyserException("Delimeter incorrect", CensusAnalyserException.Exception_type.Delimeter_Incorrect);
+                }
             }
             catch (CensusAnalyserException exception)
             {
