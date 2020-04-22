@@ -20,7 +20,7 @@ namespace censusAnalyser
         public StateCensusAnalyser(string path = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCensusData.csv")
         {
             this.filePath = path;
-        }
+        }   
 
         /// <summary>
         /// Method to check number of record in file

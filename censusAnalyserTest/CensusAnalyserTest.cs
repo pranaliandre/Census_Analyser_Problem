@@ -5,6 +5,7 @@ namespace censusAnalyserTest
     public class Tests
     {
         StateCensusAnalyser object_Analyser = new StateCensusAnalyser();
+        StateCodeAnalyser objectStateCode_Analyser = new StateCodeAnalyser();
         public string filePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCensusData.csv";
         public string stateCodeFilePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCode.csv";
         [SetUp]
@@ -84,8 +85,18 @@ namespace censusAnalyserTest
         public void CheckStateCodeFile_NumberOfRecord()
         {
             object expected = 37;
-            StateCodeAnalyser object_Analyser = new StateCodeAnalyser(stateCodeFilePath);
-            object actual = object_Analyser.NumberOfrecordStateCodeFile(stateCodeFilePath);
+            object actual = objectStateCode_Analyser.NumberOfrecordStateCodeFile(stateCodeFilePath);
+            Assert.AreEqual(expected, actual);
+        }
+        /// <summary>
+        /// Test for Given the state code CSV File if incorrect Returns a custom Exception
+        /// </summary>
+        [Test]
+        public void CheckStateCodeCsvFileIfIncorrect_ReturnthCensusAnalyserException()
+        {
+            object expected = "File Not Found";
+            string stateCodeFilePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCodecsv.csv";
+            object actual = objectStateCode_Analyser.NumberOfrecordStateCodeFile(stateCodeFilePath);
             Assert.AreEqual(expected, actual);
         }
     }

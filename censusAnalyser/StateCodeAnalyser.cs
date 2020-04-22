@@ -17,6 +17,8 @@ namespace censusAnalyser
         {
             try
             {
+                if (stateCodeFilePath != "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCode.csv")
+                    throw new CensusAnalyserException("File Not Found", CensusAnalyserException.Exception_type.File_Not_Found);
                 CsvReader csv = new CsvReader(new StreamReader(stateCodeFilePath));
                 while (csv.ReadNextRecord())
                     StateCodeNumberOfrecord++;
