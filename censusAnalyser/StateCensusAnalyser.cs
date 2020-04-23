@@ -10,76 +10,38 @@ namespace censusAnalyser
         /// <summary>
         /// variable
         /// </summary>
-        public string filePath;
-        public int numberOfRecord = 0;
+        /// 
+        public string stateCensusFilePath;
+        public string[] header;
         public char delimeter;
         /// <summary>
-        ///parameterized constructor is used to provide different values to the objects
+        /// Default constructor for invoking object.
         /// </summary>
-        /// <param name="path"></param>
-        public StateCensusAnalyser(string path = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCensusData.csv")
-        {
-            this.filePath = path;
-        }   
-
+        public StateCensusAnalyser() { }
         /// <summary>
-        /// Method to check number of record in file
+        /// Parameterized constructor for different variables.
         /// </summary>
-        /// <param name="filePath"></param>
-        /// <returns></returns>
-        public object NumberOfRecord(string filePath,char in_delimeter,string[] in_header)
+        /// <param name="stateCensusFilePath"></param>
+        /// <param name="delimeter"></param>
+        /// <param name="header"></param>
+        public StateCensusAnalyser(string stateCensusFilePath, char delimeter, string[] header)
         {
-            try
-            {
-                //if File type incorrect throw exception
-                if (!filePath.EndsWith(".csv"))
-                    throw new CensusAnalyserException("File Type Incorrect", CensusAnalyserException.Exception_type.File_Type_Incorrect);
-                //If file path incorrect throw exception
-                if (filePath != "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCensusData.csv")
-                    throw new CensusAnalyserException("File Not Found", CensusAnalyserException.Exception_type.File_Not_Found);
-
-                //Read record one by one in csv file
-                CsvReader csv = new CsvReader(new StreamReader(filePath));
-                {
-                    while (csv.ReadNextRecord())
-                        numberOfRecord++;
-                    delimeter = csv.Delimiter;
-                    //If delimeter are incorrect throw exception
-                    if (!in_delimeter.Equals(delimeter))
-                    {
-                        throw new CensusAnalyserException("Delimeter incorrect", CensusAnalyserException.Exception_type.Delimeter_Incorrect);
-                    }
-                }
-                //getting field headers
-                string[] header = csv.GetFieldHeaders();
-                //If header is incorrect throw exception
-                if (!IsHeaderEqual(in_header, header))
-                    throw new CensusAnalyserException("Header incorrect", CensusAnalyserException.Exception_type.Header_Incorrect);
-            }
-            catch (CensusAnalyserException exception)
-            {
-                return exception.Message;
-            }
-            return numberOfRecord;
+            this.stateCensusFilePath = stateCensusFilePath;
+            this.delimeter = delimeter;
+            this.header = header;
         }
         /// <summary>
-        /// Method to compare two string arrays
+        /// Method to read the record state census csv file and check the file type,file path, delimeter and header .
         /// </summary>
-        /// <param name="header1"></param>
-        /// <param name="header2"></param>
+        /// <param name="stateCensusFilePath"></param>
+        /// <param name="delimeter"></param>
+        /// <param name="header"></param>
         /// <returns></returns>
-        public bool IsHeaderEqual(string[] header1, string[] header2)
+        public object CsvStateCensusReadRecord(string stateCensusFilePath, char delimeter, string[] header)
         {
-            // if length os the strings different return false
-            if (header1.Length != header2.Length) 
-                return false;
-            // loop and check each and every value of 2 strings
-            for (int i = 0; i < header1.Length; i++)
-            {
-                if(header1[i].CompareTo(header2[i])!=0)
-                    return false;
-            }
-            return true;
+            CensusAnalyser stateCensusPathObject = new CensusAnalyser(stateCensusFilePath);
+            object returnObject = stateCensusPathObject.ReadRecordCsvFile(stateCensusFilePath, delimeter, header);
+            return returnObject;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using censusAnalyser;
 namespace censusAnalyser
 {
     public class CensusAnalyserException:Exception
