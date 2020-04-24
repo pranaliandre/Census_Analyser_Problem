@@ -46,6 +46,8 @@ namespace censusAnalyser
                 {
                     while (csv.ReadNextRecord())
                         numberOfRecord++;
+                    if (numberOfRecord == 0)
+                        throw new CSVException("file has no data", CSVException.Exception_type.FILE_HAS_NO_DATA);
                     delimeter = csv.Delimiter;
                     //If delimeter are incorrect throw exception
                     if (!in_delimeter.Equals(delimeter))
@@ -56,11 +58,26 @@ namespace censusAnalyser
                 //If header is incorrect throw exception
                 if (!IsHeaderEqual(in_header, header))
                     throw new CensusAnalyserException("Header incorrect", CensusAnalyserException.Exception_type.Header_Incorrect);
+                
+
+            }
+            catch(NullReferenceException exception)
+            {
+                return exception.Message;
+            }
+            catch(FileNotFoundException exception)
+            {
+                return exception.Message;
             }
             catch (CensusAnalyserException exception)
             {
                 return exception.Message;
             }
+            catch(Exception exception)
+            {
+                return exception.Message;
+            }
+
 
             return numberOfRecord;
         }

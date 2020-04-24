@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using censusAnalyser;
 namespace censusAnalyser
 {
     /// <summary>
-    /// csv builder class for reding or fetching data from file 
+    /// csv builder class for reading or fetching data from file 
     /// </summary>
     public interface CSVBuilder
     {
