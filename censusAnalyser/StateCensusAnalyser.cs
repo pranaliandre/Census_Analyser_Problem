@@ -2,7 +2,7 @@
 
 namespace censusAnalyser
 {
-    public class StateCensusAnalyser
+    public class StateCensusAnalyser : CSVBuilder
     {
         /// <summary>
         /// variable
@@ -11,6 +11,7 @@ namespace censusAnalyser
         public string stateCensusFilePath;
         public string[] header;
         public char delimeter;
+        public StateCensusAnalyser() { }
         /// <summary></summary>
         /// <summary>
         /// Parameterized constructor for different variables.
@@ -44,6 +45,14 @@ namespace censusAnalyser
             CensusAnalyser stateCensusPathObject = new CensusAnalyser(stateCensusFilePath);
             object returnObject = stateCensusPathObject.ReadRecordCsvFile(stateCensusFilePath, delimeter, header);
             return returnObject;
+        }
+        object CSVBuilder.CsvStateCensusReadRecord(string stateCensusFilePath, char delimeter, string[] header)
+        {
+            throw new NotImplementedException();
+        }
+        object CSVBuilder.CsvStateCodeReadRecord(string stateCodeFilePath, char delimeter, string[] header)
+        {
+            throw new NotImplementedException();
         }
     }
 }

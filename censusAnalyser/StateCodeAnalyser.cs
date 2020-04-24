@@ -1,8 +1,7 @@
 ﻿using System;
-
 namespace censusAnalyser
 {
-    public class StateCodeAnalyser
+    public class StateCodeAnalyser : CSVBuilder
     {
         /// <summary>
         /// variable
@@ -10,6 +9,7 @@ namespace censusAnalyser
         public string stateCodeFilePath;
         public char delimeter;
         public string[] header;
+        public StateCodeAnalyser() { }
         /// <summary>
         ///  Parameterized constructor for different variables.
         /// </summary>
@@ -42,6 +42,15 @@ namespace censusAnalyser
             CensusAnalyser stateCodePathObject = new CensusAnalyser(stateCodeFilePath);
             object returnObject = stateCodePathObject.ReadRecordCsvFile(stateCodeFilePath, delimeter, header);
             return returnObject;
+        }
+
+        object CSVBuilder.CsvStateCensusReadRecord(string stateCensusFilePath, char delimeter, string[] header)
+        {
+            throw new NotImplementedException();
+        }
+        object CSVBuilder.CsvStateCodeReadRecord(string stateCodeFilePath, char delimeter, string[] header)
+        {
+            throw new NotImplementedException();
         }
     }
 }

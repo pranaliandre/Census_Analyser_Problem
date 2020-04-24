@@ -6,8 +6,8 @@ namespace censusAnalyserTest
 {
     public class Tests
     {
-        CsvStateCensus CSVStateCensusData = CsvStateCensusReadRecord;
-        CsvStateCode CSVStatesCodeData = CsvStateCodeReadRecord;
+        readonly CsvStateCensus CsvStateCensus = CSVFactory.DelegateOfStateCensusAnalyser();
+        readonly CsvStateCode CsvStatesCode = CSVFactory.DelegateofStatecodeAnalyser();
         [SetUp]
         public void Setup()
         { }
@@ -21,7 +21,7 @@ namespace censusAnalyserTest
             char delimeter = ',';
             string[] header = { "State", "Population", "AreaInSqKm", "DensityPerSqKm" };
             string stateCensusfilePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCensusData.csv";
-            object actual = CSVStateCensusData(stateCensusfilePath, delimeter, header);
+            object actual = CsvStateCensus(stateCensusfilePath, delimeter, header);
             Assert.AreEqual(expected, actual);
         }
         
@@ -35,7 +35,7 @@ namespace censusAnalyserTest
             char delimeter = ',';
             string[] header = { "State", "Population", "AreaInSqKm", "DensityPerSqKm" };
             string stateCensusfilePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/CensusData.csv";
-            object actual = CSVStateCensusData(stateCensusfilePath, delimeter, header);
+            object actual = CsvStateCensus(stateCensusfilePath, delimeter, header);
             Assert.AreEqual(expected, actual);
         }
         
@@ -49,7 +49,7 @@ namespace censusAnalyserTest
             char delimeter = ',';
             string[] header = { "State", "Population", "AreaInSqKm", "DensityPerSqKm" };
             string stateCensusfilePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCensusData.txt";
-            object actual = CSVStateCensusData(stateCensusfilePath, delimeter, header);
+            object actual = CsvStateCensus(stateCensusfilePath, delimeter, header);
             Assert.AreEqual(expected, actual);
         }
 
@@ -63,7 +63,7 @@ namespace censusAnalyserTest
             char delimeter = '.';
             string[] header = { "State", "Population", "AreaInSqKm", "DensityPerSqKm" };
             string stateCensusfilePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCensusData.csv";
-            object actual = CSVStateCensusData(stateCensusfilePath, delimeter, header);
+            object actual = CsvStateCensus(stateCensusfilePath, delimeter, header);
             Assert.AreEqual(expected, actual);
         }
         /// <summary>
@@ -76,7 +76,7 @@ namespace censusAnalyserTest
             char delimeter = ',';
             string[] header = { "SrNo", "State", "AreaInSqkm", "MobileNo", "Statecode" };
             string stateCensusfilePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCensusData.csv";
-            object actual = CSVStateCensusData(stateCensusfilePath, delimeter, header);
+            object actual = CsvStateCensus(stateCensusfilePath, delimeter, header);
             Assert.AreEqual(expected, actual);
         }
         
@@ -90,7 +90,7 @@ namespace censusAnalyserTest
             char delimeter = ',';
             string[] header = { "SrNo", "State", "Name" , "TIN", "StateCode" };
             string stateCodeFilePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCode.csv";
-            object actual = CSVStatesCodeData(stateCodeFilePath, delimeter, header);
+            object actual = CsvStatesCode(stateCodeFilePath, delimeter, header);
             Assert.AreEqual(expected, actual);
         }
         
@@ -105,7 +105,7 @@ namespace censusAnalyserTest
             char delimeter = ',';
             string[] header = { "SrNo", "State", "Name", "TIN", "StateCode" };
             string stateCodeFilePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCodecsv.csv";
-            object actual = CSVStatesCodeData(stateCodeFilePath, delimeter, header);
+            object actual = CsvStatesCode(stateCodeFilePath, delimeter, header);
             Assert.AreEqual(expected, actual);
         }
         
@@ -119,7 +119,7 @@ namespace censusAnalyserTest
             char delimeter = ',';
             string[] header = { "SrNo", "State", "Name", "TIN", "StateCode" };
             string stateCodeFilePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCode.txt";
-            object actual = CSVStatesCodeData(stateCodeFilePath, delimeter, header);
+            object actual = CsvStatesCode(stateCodeFilePath, delimeter, header);
             Assert.AreEqual(expected, actual);
         }
         
@@ -133,10 +133,9 @@ namespace censusAnalyserTest
             char delimeter = '.';
             string[] header = { "SrNo", "State", "Name", "TIN", "StateCode" };
             string stateCodeFilePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCode.csv";
-            object actual = CSVStatesCodeData(stateCodeFilePath, delimeter, header);
+            object actual = CsvStatesCode(stateCodeFilePath, delimeter, header);
             Assert.AreEqual(expected, actual);
         }
-        
         /// <summary>
         /// Test for given state code file Header incorrect return a custom exception
         /// </summary>
@@ -147,7 +146,7 @@ namespace censusAnalyserTest
             char delimeter = ',';
             string[] header = { "SrNo", "State", "Name", "Mobile", "Statecode" };
             string stateCodeFilePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCode.csv";
-            object actual = CSVStatesCodeData(stateCodeFilePath, delimeter, header);
+            object actual = CsvStatesCode(stateCodeFilePath, delimeter, header);
             Assert.AreEqual(expected, actual);
         }
     }
