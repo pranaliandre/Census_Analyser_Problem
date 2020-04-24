@@ -1,11 +1,13 @@
 using NUnit.Framework;
 using censusAnalyser;
+using static censusAnalyser.StateCensusAnalyser;
+using static censusAnalyser.StateCodeAnalyser;
 namespace censusAnalyserTest
 {
     public class Tests
     {
-        StateCensusAnalyser object_Analyser = new StateCensusAnalyser();
-        StateCodeAnalyser objectStateCode_Analyser = new StateCodeAnalyser();
+        CsvStateCensus CSVStateCensusData = CsvStateCensusReadRecord;
+        CsvStateCode CSVStatesCodeData = CsvStateCodeReadRecord;
         [SetUp]
         public void Setup()
         { }
@@ -19,7 +21,7 @@ namespace censusAnalyserTest
             char delimeter = ',';
             string[] header = { "State", "Population", "AreaInSqKm", "DensityPerSqKm" };
             string stateCensusfilePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCensusData.csv";
-            object actual = object_Analyser.CsvStateCensusReadRecord(stateCensusfilePath, delimeter, header);
+            object actual = CSVStateCensusData(stateCensusfilePath, delimeter, header);
             Assert.AreEqual(expected, actual);
         }
         
@@ -33,7 +35,7 @@ namespace censusAnalyserTest
             char delimeter = ',';
             string[] header = { "State", "Population", "AreaInSqKm", "DensityPerSqKm" };
             string stateCensusfilePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/CensusData.csv";
-            object actual = object_Analyser.CsvStateCensusReadRecord(stateCensusfilePath, delimeter, header);
+            object actual = CSVStateCensusData(stateCensusfilePath, delimeter, header);
             Assert.AreEqual(expected, actual);
         }
         
@@ -47,7 +49,7 @@ namespace censusAnalyserTest
             char delimeter = ',';
             string[] header = { "State", "Population", "AreaInSqKm", "DensityPerSqKm" };
             string stateCensusfilePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCensusData.txt";
-            object actual = object_Analyser.CsvStateCensusReadRecord(stateCensusfilePath, delimeter, header);
+            object actual = CSVStateCensusData(stateCensusfilePath, delimeter, header);
             Assert.AreEqual(expected, actual);
         }
 
@@ -61,7 +63,7 @@ namespace censusAnalyserTest
             char delimeter = '.';
             string[] header = { "State", "Population", "AreaInSqKm", "DensityPerSqKm" };
             string stateCensusfilePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCensusData.csv";
-            object actual = object_Analyser.CsvStateCensusReadRecord(stateCensusfilePath, delimeter, header);
+            object actual = CSVStateCensusData(stateCensusfilePath, delimeter, header);
             Assert.AreEqual(expected, actual);
         }
         /// <summary>
@@ -74,7 +76,7 @@ namespace censusAnalyserTest
             char delimeter = ',';
             string[] header = { "SrNo", "State", "AreaInSqkm", "MobileNo", "Statecode" };
             string stateCensusfilePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCensusData.csv";
-            object actual = object_Analyser.CsvStateCensusReadRecord(stateCensusfilePath, delimeter, header);
+            object actual = CSVStateCensusData(stateCensusfilePath, delimeter, header);
             Assert.AreEqual(expected, actual);
         }
         
@@ -88,7 +90,7 @@ namespace censusAnalyserTest
             char delimeter = ',';
             string[] header = { "SrNo", "State", "Name" , "TIN", "StateCode" };
             string stateCodeFilePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCode.csv";
-            object actual = objectStateCode_Analyser.CsvStateCodeReadRecord(stateCodeFilePath, delimeter, header);
+            object actual = CSVStatesCodeData(stateCodeFilePath, delimeter, header);
             Assert.AreEqual(expected, actual);
         }
         
@@ -103,7 +105,7 @@ namespace censusAnalyserTest
             char delimeter = ',';
             string[] header = { "SrNo", "State", "Name", "TIN", "StateCode" };
             string stateCodeFilePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCodecsv.csv";
-            object actual = objectStateCode_Analyser.CsvStateCodeReadRecord(stateCodeFilePath, delimeter, header);
+            object actual = CSVStatesCodeData(stateCodeFilePath, delimeter, header);
             Assert.AreEqual(expected, actual);
         }
         
@@ -117,7 +119,7 @@ namespace censusAnalyserTest
             char delimeter = ',';
             string[] header = { "SrNo", "State", "Name", "TIN", "StateCode" };
             string stateCodeFilePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCode.txt";
-            object actual = objectStateCode_Analyser.CsvStateCodeReadRecord(stateCodeFilePath, delimeter, header);
+            object actual = CSVStatesCodeData(stateCodeFilePath, delimeter, header);
             Assert.AreEqual(expected, actual);
         }
         
@@ -131,7 +133,7 @@ namespace censusAnalyserTest
             char delimeter = '.';
             string[] header = { "SrNo", "State", "Name", "TIN", "StateCode" };
             string stateCodeFilePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCode.csv";
-            object actual = objectStateCode_Analyser.CsvStateCodeReadRecord(stateCodeFilePath, delimeter, header);
+            object actual = CSVStatesCodeData(stateCodeFilePath, delimeter, header);
             Assert.AreEqual(expected, actual);
         }
         
@@ -145,7 +147,7 @@ namespace censusAnalyserTest
             char delimeter = ',';
             string[] header = { "SrNo", "State", "Name", "Mobile", "Statecode" };
             string stateCodeFilePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCode.csv";
-            object actual = objectStateCode_Analyser.CsvStateCodeReadRecord(stateCodeFilePath, delimeter, header);
+            object actual = CSVStatesCodeData(stateCodeFilePath, delimeter, header);
             Assert.AreEqual(expected, actual);
         }
     }

@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.IO;
-using LumenWorks.Framework.IO.Csv;
+
 namespace censusAnalyser
 {
     public class StateCensusAnalyser
@@ -14,10 +11,7 @@ namespace censusAnalyser
         public string stateCensusFilePath;
         public string[] header;
         public char delimeter;
-        /// <summary>
-        /// Default constructor for invoking object.
-        /// </summary>
-        public StateCensusAnalyser() { }
+        /// <summary></summary>
         /// <summary>
         /// Parameterized constructor for different variables.
         /// </summary>
@@ -31,13 +25,21 @@ namespace censusAnalyser
             this.header = header;
         }
         /// <summary>
+        ///  Delegate is a reference type variable that hold the refenence to a method
+        /// </summary>
+        /// <param name="stateCensusFilePath"></param>
+        /// <param name="delimeter"></param>
+        /// <param name="header"></param>
+        /// <returns></returns>
+        public delegate object CsvStateCensus(string stateCensusFilePath, char delimeter, string[] header);
+        /// <summary>
         /// Method to read the record state census csv file and check the file type,file path, delimeter and header .
         /// </summary>
         /// <param name="stateCensusFilePath"></param>
         /// <param name="delimeter"></param>
         /// <param name="header"></param>
         /// <returns></returns>
-        public object CsvStateCensusReadRecord(string stateCensusFilePath, char delimeter, string[] header)
+        public static object CsvStateCensusReadRecord(string stateCensusFilePath, char delimeter, string[] header)
         {
             CensusAnalyser stateCensusPathObject = new CensusAnalyser(stateCensusFilePath);
             object returnObject = stateCensusPathObject.ReadRecordCsvFile(stateCensusFilePath, delimeter, header);
