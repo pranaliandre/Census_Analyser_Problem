@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using LumenWorks.Framework.IO.Csv;
+using System.Collections.Generic;
 namespace censusAnalyser
 {
     public class CensusAnalyser
@@ -10,7 +11,7 @@ namespace censusAnalyser
         /// </summary>
         public int numberOfRecord = 0;
         public string filePath;
-        public string[] header; 
+        public string[] header;
         public char delimeter;
         /// <summary>
         /// Default constructor for invoking object.
@@ -37,35 +38,61 @@ namespace censusAnalyser
             {
                 //if File type incorrect throw exception
                 if (Path.GetExtension(filePath) != ".csv")
+                {
                     throw new CensusAnalyserException("File Type Incorrect", CensusAnalyserException.Exception_type.File_Type_Incorrect);
+                }
                 //If file path incorrect throw exception
                 if (filePath != "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCensusData.csv" && filePath != "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCode.csv")
+                {
                     throw new CensusAnalyserException("File Not Found", CensusAnalyserException.Exception_type.File_Not_Found);
+                }
                 //Read record one by one in csv file
                 CsvReader csv = new CsvReader(new StreamReader(filePath));
                 {
+                    int fieldCount = csv.FieldCount;
+                    //get fields of files
+                    string[] headers = csv.GetFieldHeaders();
+                    //add array list 
+                    List<string[]> record = new List<string[]>();
+                    //the record from csv file to temp record line by line
                     while (csv.ReadNextRecord())
+                    { 
                         numberOfRecord++;
+                    }
+                    //iterate the record from csv file to temp record line by line
+                    while (csv.ReadNextRecord())
+                    {
+                        string[] tempRecord = new string[fieldCount];
+                        //copy csv file record in temp record line by line
+                        csv.CopyCurrentRecordTo(tempRecord);
+                        //add temprecord in array list
+                        record.Add(tempRecord);
+                    }
+
                     if (numberOfRecord == 0)
+                    {
                         throw new CSVException("file has no data", CSVException.Exception_type.FILE_HAS_NO_DATA);
+                    }
                     delimeter = csv.Delimiter;
                     //If delimeter are incorrect throw exception
                     if (!in_delimeter.Equals(delimeter))
+                    {
                         throw new CensusAnalyserException("Delimeter incorrect", CensusAnalyserException.Exception_type.Delimeter_Incorrect);
+                    }
                 }
                 //getting field headers
                 string[] header = csv.GetFieldHeaders();
                 //If header is incorrect throw exception
                 if (!IsHeaderEqual(in_header, header))
+                {
                     throw new CensusAnalyserException("Header incorrect", CensusAnalyserException.Exception_type.Header_Incorrect);
-                
-
+                }
             }
-            catch(NullReferenceException exception)
+            catch (NullReferenceException exception)
             {
                 return exception.Message;
             }
-            catch(FileNotFoundException exception)
+            catch (FileNotFoundException exception)
             {
                 return exception.Message;
             }
@@ -73,12 +100,10 @@ namespace censusAnalyser
             {
                 return exception.Message;
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 return exception.Message;
             }
-
-
             return numberOfRecord;
         }
         /// <summary>
