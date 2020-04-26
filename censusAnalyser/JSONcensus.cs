@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.IO;
@@ -55,6 +53,5 @@ namespace censusAnalyser
             File.WriteAllText(jsonFilepath, jsonArray);
             return CensusAnalyser.RetriveLastDataOnKey(jsonFilepath, key);
         }
-    }
-    
+    }   
 }

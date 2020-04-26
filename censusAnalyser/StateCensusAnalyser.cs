@@ -11,12 +11,7 @@ namespace censusAnalyser
         public string stateCensusFilePath;
         public string[] header;
         public char delimeter;
-
-        public object State { get; internal set; }
         public string filepath;
-        public static string jsonPathstateCensus;
-
-        
         public StateCensusAnalyser() { }
         /// <summary></summary>
         /// <summary>
@@ -51,18 +46,6 @@ namespace censusAnalyser
             CensusAnalyser stateCensusPathObject = new CensusAnalyser(stateCensusFilePath);
             object returnObject = stateCensusPathObject.ReadRecordCsvFile(stateCensusFilePath, delimeter, header);
             return returnObject;
-        }
-        /// <summary>
-        /// Main Method
-        /// </summary>
-        static void Main(string[] args)
-        {
-            // Console.WriteLine("Welcome to India state census Analyzer");
-            string firstValue = CensusAnalyser.RetriveFirstDataOnKey(jsonPathstateCensus, "State");
-            string lastValue = CensusAnalyser.RetriveLastDataOnKey(jsonPathstateCensus, "State");
-
-            Console.WriteLine(firstValue);
-            Console.WriteLine(lastValue);
         }
         object ICSVBuilder.CsvStateCensusReadRecord(string stateCensusFilePath, char delimeter, string[] header)
         {

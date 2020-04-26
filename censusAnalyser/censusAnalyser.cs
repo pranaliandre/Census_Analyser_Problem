@@ -1,18 +1,8 @@
 ﻿using System;
 using System.IO;
 using LumenWorks.Framework.IO.Csv;
-using System.Collections.Generic;
-using System.Linq.Expressions;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-using System.Linq;
 using System.Collections;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System.Text;
-using Microsoft.VisualBasic.FileIO;
-
-using System.Globalization;
 namespace censusAnalyser
 {
     public class CensusAnalyser
@@ -174,6 +164,7 @@ namespace censusAnalyser
             string firstValue = jArray[0][key].ToString();
             return firstValue;
         }
+
         /// <summary>
         /// Method to retrive the last state data
         /// </summary>
@@ -187,6 +178,20 @@ namespace censusAnalyser
             string lastValue = jArray[jArray.Count - 1][key].ToString();
             return lastValue;
         }
-       
+
+        public static string filePath1;
+        public static char in_delimeter1;
+        public static string[] in_header1;
+        public static string jsonFilePath1;
+        public static string key1;
+        public static string jsonPath1;
+        static void Main(string[] args)
+        {
+            CensusAnalyser c = new CensusAnalyser();
+            c.ReadRecordCsvFile(filePath1, in_delimeter1, in_header1);
+            SortingJsonBasedOnKey(jsonFilePath1, key1);
+            RetriveFirstDataOnKey(jsonPath1, key1);
+            RetriveLastDataOnKey(jsonPath1,key1);
+        }
     }
 }

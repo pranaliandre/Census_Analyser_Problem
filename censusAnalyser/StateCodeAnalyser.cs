@@ -9,6 +9,7 @@ namespace censusAnalyser
         public string stateCodeFilePath;
         public char delimeter;
         public string[] header;
+        public string filepath;
         public StateCodeAnalyser() { }
         /// <summary>
         ///  Parameterized constructor for different variables.
@@ -18,7 +19,7 @@ namespace censusAnalyser
         /// <param name="header"></param>
         public StateCodeAnalyser(string stateCodeFilePath, char delimeter,string[] header)
         {
-            this.stateCodeFilePath = stateCodeFilePath;
+           this.stateCodeFilePath = stateCodeFilePath;
            this.delimeter = delimeter;
            this.header = header;
         }

@@ -90,7 +90,7 @@ namespace censusAnalyserTest
         {
             object expected = 37;
             char delimeter = ',';
-            string[] header = { "SrNo", "State", "Name", "TIN", "StateCode" };
+            string[] header = { "SrNo", "StateName", "TIN", "StateCode" };
             string stateCodeFilePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCode.csv";
             object actual = CsvStatesCode(stateCodeFilePath, delimeter, header);
             Assert.AreEqual(expected, actual);
@@ -146,7 +146,7 @@ namespace censusAnalyserTest
         {
             object expected = "Header incorrect";
             char delimeter = ',';
-            string[] header = { "SrNo", "State", "Name", "Mobile", "Statecode" };
+            string[] header = { "SrNo", "StateName", "Mobile", "Statecode" };
             string stateCodeFilePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCode.csv";
             object actual = CsvStatesCode(stateCodeFilePath, delimeter, header);
             Assert.AreEqual(expected, actual);
@@ -172,6 +172,28 @@ namespace censusAnalyserTest
             string expected = "West Bengal";
             string stateCensusfilePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCensusData.csv";
             string lastValue = JSONCensus.SortCsvFileWriteInJsonAndReturnLastData(stateCensusfilePath, jsonPathstateCensus, "State");
+            Assert.AreEqual(expected, lastValue);
+        }
+        /// <summary>
+        ///  Test for StateCensuscsv and json path to add into json after sorting return return first state.
+        /// </summary>
+        [Test]
+        public void StateCodeCSVAndJsonPathToAddIntoJSon_AfterSorting_ReturnFirstState()
+        {
+            string expected = "AD";
+            string stateCodeFilePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCode.csv";
+            string actual = JSONCensus.SortCsvFileWriteInJsonAndReturnFirstData(stateCodeFilePath, jsonPathstatecode, "StateCode");
+            Assert.AreEqual(expected, actual);
+        }
+        /// <summary>
+        /// Test for StateCensuscsv and json path to add into json after sorting return return last state.
+        /// </summary>
+        [Test]
+        public void StatusCodeCSVAndJsonPathToAddIntoJSon_AfterSorting_ReturnLastState()
+        {
+            string expected = "WB";
+            string stateCodeFilePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCode.csv";
+            string lastValue = JSONCensus.SortCsvFileWriteInJsonAndReturnLastData(stateCodeFilePath, jsonPathstatecode, "StateCode");
             Assert.AreEqual(expected, lastValue);
         }
     }
