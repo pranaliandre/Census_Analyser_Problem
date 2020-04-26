@@ -1,7 +1,7 @@
 ﻿using System;
 namespace censusAnalyser
 {
-    public class StateCodeAnalyser : CSVBuilder
+    public class StateCodeAnalyser : ICSVBuilder
     {
         /// <summary>
         /// variable
@@ -44,11 +44,11 @@ namespace censusAnalyser
             return returnObject;
         }
 
-        object CSVBuilder.CsvStateCensusReadRecord(string stateCensusFilePath, char delimeter, string[] header)
+        object ICSVBuilder.CsvStateCensusReadRecord(string stateCensusFilePath, char delimeter, string[] header)
         {
             throw new NotImplementedException();
         }
-        object CSVBuilder.CsvStateCodeReadRecord(string stateCodeFilePath, char delimeter, string[] header)
+        object ICSVBuilder.CsvStateCodeReadRecord(string stateCodeFilePath, char delimeter, string[] header)
         {
             throw new NotImplementedException();
         }

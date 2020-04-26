@@ -1,5 +1,5 @@
-using NUnit.Framework;
 using censusAnalyser;
+using NUnit.Framework;
 using static censusAnalyser.StateCensusAnalyser;
 using static censusAnalyser.StateCodeAnalyser;
 namespace censusAnalyserTest
@@ -8,6 +8,8 @@ namespace censusAnalyserTest
     {
         readonly CsvStateCensus CsvStateCensus = CSVFactory.DelegateOfStateCensusAnalyser();
         readonly CsvStateCode CsvStatesCode = CSVFactory.DelegateofStatecodeAnalyser();
+        public string jsonPathstateCensus = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCodeData.json";
+        public string jsonPathstatecode = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCode.json";
         [SetUp]
         public void Setup()
         { }
@@ -24,7 +26,7 @@ namespace censusAnalyserTest
             object actual = CsvStateCensus(stateCensusfilePath, delimeter, header);
             Assert.AreEqual(expected, actual);
         }
-        
+
         /// <summary>
         /// Test for Given state census CSV File if incorrect Returns a custom Exception
         /// </summary>
@@ -38,7 +40,7 @@ namespace censusAnalyserTest
             object actual = CsvStateCensus(stateCensusfilePath, delimeter, header);
             Assert.AreEqual(expected, actual);
         }
-        
+
         /// <summary>
         /// Test for Given state census file type incorrect return a custom exception
         /// </summary>
@@ -79,7 +81,7 @@ namespace censusAnalyserTest
             object actual = CsvStateCensus(stateCensusfilePath, delimeter, header);
             Assert.AreEqual(expected, actual);
         }
-        
+
         /// <summary>
         /// Test for given State Code CSV file check to ensure the number of record
         /// </summary>
@@ -88,19 +90,19 @@ namespace censusAnalyserTest
         {
             object expected = 37;
             char delimeter = ',';
-            string[] header = { "SrNo", "State", "Name" , "TIN", "StateCode" };
+            string[] header = { "SrNo", "State", "Name", "TIN", "StateCode" };
             string stateCodeFilePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCode.csv";
             object actual = CsvStatesCode(stateCodeFilePath, delimeter, header);
             Assert.AreEqual(expected, actual);
         }
-        
+
         /// <summary>
         /// Test for Given the state code CSV File if incorrect Returns a custom Exception
         /// </summary>
         [Test]
         public void CheckStateCodeCsvFileIfIncorrect_ReturnthCensusAnalyserException()
         {
-           
+
             object expected = "File Not Found";
             char delimeter = ',';
             string[] header = { "SrNo", "State", "Name", "TIN", "StateCode" };
@@ -108,7 +110,7 @@ namespace censusAnalyserTest
             object actual = CsvStatesCode(stateCodeFilePath, delimeter, header);
             Assert.AreEqual(expected, actual);
         }
-        
+
         /// <summary>
         /// Test for Given state code file type incorrect return a custom exception
         /// </summary>
@@ -122,7 +124,7 @@ namespace censusAnalyserTest
             object actual = CsvStatesCode(stateCodeFilePath, delimeter, header);
             Assert.AreEqual(expected, actual);
         }
-        
+
         /// <summary>
         /// Test for given state code csv file delimeter incorrect return a custom exception
         /// </summary>
@@ -148,6 +150,29 @@ namespace censusAnalyserTest
             string stateCodeFilePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCode.csv";
             object actual = CsvStatesCode(stateCodeFilePath, delimeter, header);
             Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///  Test for StateCensuscsv and json path to add into json after sorting return return first state.
+        /// </summary>
+        [Test]
+        public void StateCensusCSVAndJsonPathToAddIntoJSon_AfterSorting_ReturnFirstState()
+        {
+            string expected = "Andhra Pradesh";
+            string stateCensusfilePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCensusData.csv";
+            string actual = JSONCensus.SortCsvFileWriteInJsonAndReturnFirstData(stateCensusfilePath, jsonPathstateCensus, "State");
+            Assert.AreEqual(expected, actual);
+        }
+        /// <summary>
+        /// Test for StateCensuscsv and json path to add into json after sorting return return last state.
+        /// </summary>
+        [Test]
+        public void StatusCensusCSVAndJsonPathToAddIntoJSon_AfterSorting_ReturnLastState()
+        {
+            string expected = "West Bengal";
+            string stateCensusfilePath = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCensusData.csv";
+            string lastValue = JSONCensus.SortCsvFileWriteInJsonAndReturnLastData(stateCensusfilePath, jsonPathstateCensus, "State");
+            Assert.AreEqual(expected, lastValue);
         }
     }
 }

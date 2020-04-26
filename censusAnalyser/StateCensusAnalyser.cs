@@ -2,7 +2,7 @@
 
 namespace censusAnalyser
 {
-    public class StateCensusAnalyser : CSVBuilder
+    public class StateCensusAnalyser : ICSVBuilder
     {
         /// <summary>
         /// variable
@@ -11,6 +11,12 @@ namespace censusAnalyser
         public string stateCensusFilePath;
         public string[] header;
         public char delimeter;
+
+        public object State { get; internal set; }
+        public string filepath;
+        public static string jsonPathstateCensus;
+
+        
         public StateCensusAnalyser() { }
         /// <summary></summary>
         /// <summary>
@@ -46,13 +52,29 @@ namespace censusAnalyser
             object returnObject = stateCensusPathObject.ReadRecordCsvFile(stateCensusFilePath, delimeter, header);
             return returnObject;
         }
-        object CSVBuilder.CsvStateCensusReadRecord(string stateCensusFilePath, char delimeter, string[] header)
+        /// <summary>
+        /// Main Method
+        /// </summary>
+        static void Main(string[] args)
+        {
+            // Console.WriteLine("Welcome to India state census Analyzer");
+            string firstValue = CensusAnalyser.RetriveFirstDataOnKey(jsonPathstateCensus, "State");
+            string lastValue = CensusAnalyser.RetriveLastDataOnKey(jsonPathstateCensus, "State");
+
+            Console.WriteLine(firstValue);
+            Console.WriteLine(lastValue);
+        }
+        object ICSVBuilder.CsvStateCensusReadRecord(string stateCensusFilePath, char delimeter, string[] header)
         {
             throw new NotImplementedException();
         }
-        object CSVBuilder.CsvStateCodeReadRecord(string stateCodeFilePath, char delimeter, string[] header)
+        object ICSVBuilder.CsvStateCodeReadRecord(string stateCodeFilePath, char delimeter, string[] header)
         {
             throw new NotImplementedException();
         }
+        //public string CheckForState(string jsonPathstateCensus, string v1, string v2)
+        //{
+          //  throw new NotImplementedException();
+        //}
     }
 }

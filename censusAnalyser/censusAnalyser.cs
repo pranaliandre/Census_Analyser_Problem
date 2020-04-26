@@ -2,6 +2,17 @@
 using System.IO;
 using LumenWorks.Framework.IO.Csv;
 using System.Collections.Generic;
+using System.Linq.Expressions;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.Linq;
+using System.Collections;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Text;
+using Microsoft.VisualBasic.FileIO;
+
+using System.Globalization;
 namespace censusAnalyser
 {
     public class CensusAnalyser
@@ -25,6 +36,7 @@ namespace censusAnalyser
         {
             this.filePath = filePath;
         }
+
         /// <summary>
         /// Method to checking record for two csv file
         /// </summary>
@@ -53,10 +65,12 @@ namespace censusAnalyser
                     //get fields of files
                     string[] headers = csv.GetFieldHeaders();
                     //add array list 
-                    List<string[]> record = new List<string[]>();
+                    //List<string[]> record = new List<string[]>();
+                    ArrayList fileData = new ArrayList();
+                    fileData.Add(fileData);
                     //the record from csv file to temp record line by line
                     while (csv.ReadNextRecord())
-                    { 
+                    {
                         numberOfRecord++;
                     }
                     //iterate the record from csv file to temp record line by line
@@ -66,9 +80,8 @@ namespace censusAnalyser
                         //copy csv file record in temp record line by line
                         csv.CopyCurrentRecordTo(tempRecord);
                         //add temprecord in array list
-                        record.Add(tempRecord);
+                        fileData.Add(tempRecord);
                     }
-
                     if (numberOfRecord == 0)
                     {
                         throw new CSVException("file has no data", CSVException.Exception_type.FILE_HAS_NO_DATA);
@@ -79,13 +92,14 @@ namespace censusAnalyser
                     {
                         throw new CensusAnalyserException("Delimeter incorrect", CensusAnalyserException.Exception_type.Delimeter_Incorrect);
                     }
-                }
-                //getting field headers
-                string[] header = csv.GetFieldHeaders();
-                //If header is incorrect throw exception
-                if (!IsHeaderEqual(in_header, header))
-                {
-                    throw new CensusAnalyserException("Header incorrect", CensusAnalyserException.Exception_type.Header_Incorrect);
+
+                    //getting field headers
+                    string[] header = csv.GetFieldHeaders();
+                    //If header is incorrect throw exception
+                    if (!IsHeaderEqual(in_header, header))
+                    {
+                        throw new CensusAnalyserException("Header incorrect", CensusAnalyserException.Exception_type.Header_Incorrect);
+                    }
                 }
             }
             catch (NullReferenceException exception)
@@ -126,20 +140,53 @@ namespace censusAnalyser
             return true;
         }
         /// <summary>
-        /// static variable
+        ///Method for sorting the state 
         /// </summary>
-        public static string filePath1;
-        public static string[] header1;
-        public static char delimeter1;
-        /// <summary>
-        /// Main Method
-        /// </summary>
-        /// <param name="args"></param>
-        static void Main(String[] args)
+        public static JArray SortingJsonBasedOnKey(string jsonFilePath, string key)
         {
-            Console.WriteLine("!!!Welcome to census analyser!!!");
-            CensusAnalyser object_CensusAnalyser = new CensusAnalyser();
-            object_CensusAnalyser.ReadRecordCsvFile(filePath1, delimeter1, header1);
+            string jsonFile = File.ReadAllText(jsonFilePath);
+            JArray CensusArray = JArray.Parse(jsonFile);
+            //bubble sort
+            for (int i = 0; i < CensusArray.Count - 1; i++)
+            {
+                for (int j = 0; j < CensusArray.Count - i - 1; j++)
+                {
+                    if (CensusArray[j][key].ToString().CompareTo(CensusArray[j + 1][key].ToString()) > 0)
+                    {
+                        var temp = CensusArray[j + 1];
+                        CensusArray[j + 1] = CensusArray[j];
+                        CensusArray[j] = temp;
+                    }
+                }
+            }
+            return CensusArray;
         }
+        /// <summary>
+        /// Method to retrive the first state data
+        /// </summary>
+        /// <param name="jsonPath"></param>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public static string RetriveFirstDataOnKey(string jsonPath, string key)
+        {
+            string jsonFileText = File.ReadAllText(jsonPath);
+            JArray jArray = JArray.Parse(jsonFileText);
+            string firstValue = jArray[0][key].ToString();
+            return firstValue;
+        }
+        /// <summary>
+        /// Method to retrive the last state data
+        /// </summary>
+        /// <param name="jsonPath"></param>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public static string RetriveLastDataOnKey(string jsonPath, string key)
+        {
+            string jsonFileText = File.ReadAllText(jsonPath);
+            JArray jArray = JArray.Parse(jsonFileText);
+            string lastValue = jArray[jArray.Count - 1][key].ToString();
+            return lastValue;
+        }
+       
     }
 }
