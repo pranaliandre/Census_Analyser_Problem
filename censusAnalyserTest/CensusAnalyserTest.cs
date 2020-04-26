@@ -26,7 +26,6 @@ namespace censusAnalyserTest
             object actual = CsvStateCensus(stateCensusfilePath, delimeter, header);
             Assert.AreEqual(expected, actual);
         }
-
         /// <summary>
         /// Test for Given state census CSV File if incorrect Returns a custom Exception
         /// </summary>

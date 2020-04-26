@@ -4,8 +4,6 @@ using LumenWorks.Framework.IO.Csv;
 using System.Collections;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
-using System.IO;
-using System.Text;
 namespace censusAnalyser
 {
     public class CensusAnalyser
@@ -131,7 +129,12 @@ namespace censusAnalyser
             }
             return true;
         }
-        public int CountRecords(string[] records)
+        /// <summary>
+        /// Method for count record using map
+        /// </summary>
+        /// <param name="records"></param>
+        /// <returns></returns>
+        public int CountRecordsUSingMap(string[] records)
         {
             int j = 1;
             Dictionary<int, Dictionary<string, string>> map = new Dictionary<int, Dictionary<string, string>>();
@@ -212,7 +215,7 @@ namespace censusAnalyser
         {
             CensusAnalyser CensusAnalyse = new CensusAnalyser();
             CensusAnalyse.ReadRecordCsvFile(filePath1, in_delimeter1, in_header1);
-            CensusAnalyse.CountRecords(record);
+            CensusAnalyse.CountRecordsUSingMap(record);
             SortingJsonBasedOnKey(jsonFilePath1, key1);
             RetriveFirstDataOnKey(jsonPath1, key1);
             RetriveLastDataOnKey(jsonPath1,key1);
