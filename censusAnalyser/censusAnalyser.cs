@@ -35,7 +35,7 @@ namespace censusAnalyser
         /// <param name="in_delimeter"></param>
         /// <param name="in_header"></param>
         /// <returns></returns>
-        public object ReadRecordCsvFile(string filePath, char in_delimeter, string[] in_header)
+        public object ReadRecordCsvFile(string filePath, char inDelimeter, string[] inHeader)
         {
             try
             {
@@ -78,7 +78,7 @@ namespace censusAnalyser
                     }
                     delimeter = csv.Delimiter;
                     //If delimeter are incorrect throw exception
-                    if (!in_delimeter.Equals(delimeter))
+                    if (!inDelimeter.Equals(delimeter))
                     {
                         throw new CensusAnalyserException("Delimeter incorrect", CensusAnalyserException.Exception_type.Delimeter_Incorrect);
                     }
@@ -86,7 +86,7 @@ namespace censusAnalyser
                     //getting field headers
                     string[] header = csv.GetFieldHeaders();
                     //If header is incorrect throw exception
-                    if (!IsHeaderEqual(in_header, header))
+                    if (!IsHeaderEqual(inHeader, header))
                     {
                         throw new CensusAnalyserException("Header incorrect", CensusAnalyserException.Exception_type.Header_Incorrect);
                     }
@@ -203,7 +203,7 @@ namespace censusAnalyser
             string lastValue = jArray[jArray.Count - 1][key].ToString();
             return lastValue;
         }
-
+       
         public static string filePath1;
         public static char in_delimeter1;
         public static string[] in_header1;

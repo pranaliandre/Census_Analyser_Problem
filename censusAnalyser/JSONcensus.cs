@@ -53,5 +53,6 @@ namespace censusAnalyser
             File.WriteAllText(jsonFilepath, jsonArray);
             return CensusAnalyser.RetriveLastDataOnKey(jsonFilepath, key);
         }
+      
     }   
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 namespace censusAnalyser
 {
-    public class StateCodeAnalyser : ICSVBuilder
+    public class StateCodeAnalyserDao : ICSVBuilder
     {
         /// <summary>
         /// variable
@@ -10,14 +10,14 @@ namespace censusAnalyser
         public char delimeter;
         public string[] header;
         public string filepath;
-        public StateCodeAnalyser() { }
+        public StateCodeAnalyserDao() { }
         /// <summary>
         ///  Parameterized constructor for different variables.
         /// </summary>
         /// <param name="stateCodeFilePath"></param>
         /// <param name="delimeter"></param>
         /// <param name="header"></param>
-        public StateCodeAnalyser(string stateCodeFilePath, char delimeter,string[] header)
+        public StateCodeAnalyserDao(string stateCodeFilePath, char delimeter,string[] header)
         {
            this.stateCodeFilePath = stateCodeFilePath;
            this.delimeter = delimeter;
@@ -30,7 +30,7 @@ namespace censusAnalyser
         /// <param name="delimeter"></param>
         /// <param name="header"></param>
         /// <returns></returns>
-        public delegate object CsvStateCode(string stateCodeFilePath, char delimeter, string[] header);
+        public delegate object CsvStateCodeDao(string stateCodeFilePath, char delimeter, string[] header);
         /// <summary>
         /// Method to read the record state code csv file and check the file type,file path, delimeter and header .
         /// </summary>

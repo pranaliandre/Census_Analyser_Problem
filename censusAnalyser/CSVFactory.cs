@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using censusAnalyser;
-using static censusAnalyser.StateCensusAnalyser;
-using static censusAnalyser.StateCodeAnalyser;
+using static censusAnalyser.StateCensusAnalyserDao;
+using static censusAnalyser.StateCodeAnalyserDao;
 namespace censusAnalyser
 {
     public class CSVFactory
@@ -12,29 +12,29 @@ namespace censusAnalyser
         /// Method to creating instance of StateCensusAnalyser
         /// </summary>
         /// <returns></returns>
-        public static CsvStateCensus DelegateOfStateCensusAnalyser()
+        public static CsvStateCensusDao DelegateOfStateCensusAnalyser()
         {
-            StateCensusAnalyser csvStateCensus = InstanceOfStateCensusAnalyser();
-            CsvStateCensus getCSVStateCensus = new CsvStateCensus(StateCensusAnalyser.CsvStateCensusReadRecord);
+            StateCensusAnalyserDao csvStateCensus = InstanceOfStateCensusAnalyser();
+            CsvStateCensusDao getCSVStateCensus = new CsvStateCensusDao(StateCensusAnalyserDao.CsvStateCensusReadRecord);
             return getCSVStateCensus;
         }
         /// <summary>
         /// Method to creating instance of StateCodeAnalyser
         /// </summary>
         /// <returns></returns>
-        public static CsvStateCode DelegateofStatecodeAnalyser()
+        public static CsvStateCodeDao DelegateofStatecodeAnalyser()
         {
-            StateCodeAnalyser statesCodeCSV = InstanceOfStateCodeAnalyser();
-            CsvStateCode getCSVStateCode = new CsvStateCode(StateCodeAnalyser.CsvStateCodeReadRecord);
+            StateCodeAnalyserDao statesCodeCSV = InstanceOfStateCodeAnalyser();
+            CsvStateCodeDao getCSVStateCode = new CsvStateCodeDao(StateCodeAnalyserDao.CsvStateCodeReadRecord);
             return getCSVStateCode;
         }
-        public static StateCensusAnalyser InstanceOfStateCensusAnalyser()
+        public static StateCensusAnalyserDao InstanceOfStateCensusAnalyser()
         {
-            return new StateCensusAnalyser();
+            return new StateCensusAnalyserDao();
         }
-        public static StateCodeAnalyser InstanceOfStateCodeAnalyser()
+        public static StateCodeAnalyserDao InstanceOfStateCodeAnalyser()
         {
-            return new StateCodeAnalyser();
+            return new StateCodeAnalyserDao();
         }
     }
 }
