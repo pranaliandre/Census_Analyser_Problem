@@ -176,6 +176,7 @@ namespace censusAnalyser
             }
             return CensusArray;
         }
+       
         /// <summary>
         /// Method to retrive the first state data
         /// </summary>
@@ -203,7 +204,30 @@ namespace censusAnalyser
             string lastValue = jArray[jArray.Count - 1][key].ToString();
             return lastValue;
         }
-       
+        /// <summary>
+        ///Method for sorting the state census population
+        /// </summary>
+        public static int SortingJsonBasedNumberOfStates(string jsonFilePath, string key)
+        {
+            int count = 0;
+            string jsonFile = File.ReadAllText(jsonFilePath);
+            JArray CensusArray = JArray.Parse(jsonFile);
+            //bubble sort
+            for (int i = 0; i < CensusArray.Count - 1; i++)
+            {
+                for (int j = 0; j < CensusArray.Count - i - 1; j++)
+                {
+                    if (CensusArray[j][key].ToString().CompareTo(CensusArray[j + 1][key].ToString()) > 0)
+                    {
+                        var temp = CensusArray[j + 1];
+                        CensusArray[j + 1] = CensusArray[j];
+                        CensusArray[j] = temp;
+                        count++;
+                    }
+                }
+            }
+            return count;
+        }
         public static string filePath1;
         public static char in_delimeter1;
         public static string[] in_header1;

@@ -54,9 +54,5 @@ namespace censusAnalyser
         {
             throw new NotImplementedException();
         }
-        //public string CheckForState(string jsonPathstateCensus, string v1, string v2)
-        //{
-          //  throw new NotImplementedException();
-        //}
     }
 }
