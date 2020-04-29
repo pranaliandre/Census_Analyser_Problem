@@ -55,25 +55,25 @@ namespace censusAnalyser
                     throw new CensusAnalyserException("File Not Found", CensusAnalyserException.Exception_type.File_Not_Found);
                 }
                 //Read record one by one in csv file
-                CsvReader csv = new CsvReader(new StreamReader(filePath));
+               CsvReader  streamReader= new CsvReader(new StreamReader(filePath));
                 {
-                    int fieldCount = csv.FieldCount;
+                    int fieldCount = streamReader.FieldCount;
                     //get fields of files
-                    string[] headers = csv.GetFieldHeaders();
+                    string[] headers = streamReader.GetFieldHeaders();
                     //add array list 
                     ArrayList fileData = new ArrayList();
                     fileData.Add(fileData);
                     //the record from csv file to temp record line by line
-                    while (csv.ReadNextRecord())
+                    while (streamReader.ReadNextRecord())
                     {
                         numberOfRecord++;
                     }
                     //iterate the record from csv file to temp record line by line
-                    while (csv.ReadNextRecord())
+                    while (streamReader.ReadNextRecord())
                     {
                         string[] records = new string[fieldCount];
                         //copy csv file record in temp record line by line
-                        csv.CopyCurrentRecordTo(records);
+                        streamReader.CopyCurrentRecordTo(records);
                         //add temprecord in array list
                         fileData.Add(records);
                     }
@@ -81,7 +81,7 @@ namespace censusAnalyser
                     {
                         throw new CSVException("file has no data", CSVException.Exception_type.FILE_HAS_NO_DATA);
                     }
-                    delimeter = csv.Delimiter;
+                    delimeter = streamReader.Delimiter;
                     //If delimeter are incorrect throw exception
                     if (!inDelimeter.Equals(delimeter))
                     {
@@ -89,7 +89,7 @@ namespace censusAnalyser
                     }
 
                     //getting field headers
-                    string[] header = csv.GetFieldHeaders();
+                    string[] header = streamReader.GetFieldHeaders();
                     //If header is incorrect throw exception
                     if (!isHeaderEqual(inHeader, header))
                     {
