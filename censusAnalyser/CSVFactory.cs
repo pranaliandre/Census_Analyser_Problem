@@ -3,7 +3,6 @@
 ///   Description: Create a object for StateCensusData,StateCode
 ///   Author:      Pranali Andre                   Date: 28/4/2020
 ///-----------------------------------------------------------------
-
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,20 +17,20 @@ namespace censusAnalyser
         /// Method to creating instance of StateCensusAnalyser
         /// </summary>
         /// <returns></returns>
-        public static CsvStateCensusDao DelegateOfStateCensusAnalyser()
+        public static csvStateCensusDao DelegateOfStateCensusAnalyser()
         {
             StateCensusAnalyserDao csvStateCensus = InstanceOfStateCensusAnalyser();
-            CsvStateCensusDao getCSVStateCensus = new CsvStateCensusDao(StateCensusAnalyserDao.CsvStateCensusReadRecord);
+            csvStateCensusDao getCSVStateCensus = new csvStateCensusDao(StateCensusAnalyserDao.csvStateCensusReadRecord);
             return getCSVStateCensus;
         }
         /// <summary>
         /// Method to creating instance of StateCodeAnalyser
         /// </summary>
         /// <returns></returns>
-        public static CsvStateCodeDao DelegateofStatecodeAnalyser()
+        public static csvStateCodeDao DelegateofStatecodeAnalyser()
         {
             StateCodeAnalyserDao statesCodeCSV = InstanceOfStateCodeAnalyser();
-            CsvStateCodeDao getCSVStateCode = new CsvStateCodeDao(StateCodeAnalyserDao.CsvStateCodeReadRecord);
+            csvStateCodeDao getCSVStateCode = new csvStateCodeDao(StateCodeAnalyserDao.csvStateCodeReadRecord);
             return getCSVStateCode;
         }
         public static StateCensusAnalyserDao InstanceOfStateCensusAnalyser()

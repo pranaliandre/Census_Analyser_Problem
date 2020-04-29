@@ -37,7 +37,7 @@ namespace censusAnalyser
         /// <param name="delimeter"></param>
         /// <param name="header"></param>
         /// <returns></returns>
-        public delegate object CsvStateCensusDao(string stateCensusFilePath, char delimeter, string[] header);
+        public delegate object csvStateCensusDao(string stateCensusFilePath, char delimeter, string[] header);
         /// <summary>
         /// Method to read the record state census csv file and check the file type,file path, delimeter and header .
         /// </summary>
@@ -45,17 +45,17 @@ namespace censusAnalyser
         /// <param name="delimeter"></param>
         /// <param name="header"></param>
         /// <returns></returns>
-        public static object CsvStateCensusReadRecord(string stateCensusFilePath, char delimeter, string[] header)
+        public static object csvStateCensusReadRecord(string stateCensusFilePath, char delimeter, string[] header)
         {
             CensusAnalyser stateCensusPathObject = new CensusAnalyser(stateCensusFilePath);
             object returnObject = stateCensusPathObject.ReadRecordCsvFile(stateCensusFilePath, delimeter, header);
             return returnObject;
         }
-        object ICSVBuilder.CsvStateCensusReadRecord(string stateCensusFilePath, char delimeter, string[] header)
+        object ICSVBuilder.csvStateCensusReadRecord(string stateCensusFilePath, char delimeter, string[] header)
         {
             throw new NotImplementedException();
         }
-        object ICSVBuilder.CsvStateCodeReadRecord(string stateCodeFilePath, char delimeter, string[] header)
+        object ICSVBuilder.csvStateCodeReadRecord(string stateCodeFilePath, char delimeter, string[] header)
         {
             throw new NotImplementedException();
         }

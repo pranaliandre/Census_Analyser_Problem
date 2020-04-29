@@ -14,7 +14,7 @@ namespace censusAnalyser
     /// </summary>
     public interface ICSVBuilder
     {
-        public object CsvStateCensusReadRecord(string stateCensusFilePath, char delimeter, string[] header);
-        public object CsvStateCodeReadRecord(string stateCodeFilePath, char delimeter, string[] header);
+        public object csvStateCensusReadRecord(string stateCensusFilePath, char delimeter, string[] header);
+        public object csvStateCodeReadRecord(string stateCodeFilePath, char delimeter, string[] header);
     }
 }
