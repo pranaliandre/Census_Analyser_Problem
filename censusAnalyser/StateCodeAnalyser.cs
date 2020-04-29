@@ -47,7 +47,7 @@ namespace censusAnalyser
         public static object csvStateCodeReadRecord(string stateCodeFilePath, char delimeter, string[] header)
         {
             CensusAnalyser stateCodePathObject = new CensusAnalyser(stateCodeFilePath);
-            object returnObject = stateCodePathObject.ReadRecordCsvFile(stateCodeFilePath, delimeter, header);
+            object returnObject = stateCodePathObject.readRecordCsvFile(stateCodeFilePath, delimeter, header);
             return returnObject;
         }
 

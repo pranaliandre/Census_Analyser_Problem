@@ -40,7 +40,7 @@ namespace censusAnalyser
         /// <param name="in_delimeter"></param>
         /// <param name="in_header"></param>
         /// <returns></returns>
-        public object ReadRecordCsvFile(string filePath, char inDelimeter, string[] inHeader)
+        public object readRecordCsvFile(string filePath, char inDelimeter, string[] inHeader)
         {
             try
             {
@@ -91,7 +91,7 @@ namespace censusAnalyser
                     //getting field headers
                     string[] header = csv.GetFieldHeaders();
                     //If header is incorrect throw exception
-                    if (!IsHeaderEqual(inHeader, header))
+                    if (!isHeaderEqual(inHeader, header))
                     {
                         throw new CensusAnalyserException("Header incorrect", CensusAnalyserException.Exception_type.Header_Incorrect);
                     }
@@ -121,7 +121,7 @@ namespace censusAnalyser
         /// <param name="header1"></param>
         /// <param name="header2"></param>
         /// <returns></returns>
-        public bool IsHeaderEqual(string[] header1, string[] header2)
+        public bool isHeaderEqual(string[] header1, string[] header2)
         {
             // if length os the strings different return false
             if (header1.Length != header2.Length)
@@ -139,7 +139,7 @@ namespace censusAnalyser
         /// </summary>
         /// <param name="records"></param>
         /// <returns></returns>
-        public int CountRecordsUSingMap(string[] records)
+        public int countRecordsUSingMap(string[] records)
         {
             int j = 1;
             Dictionary<int, Dictionary<string, string>> map = new Dictionary<int, Dictionary<string, string>>();
@@ -162,7 +162,7 @@ namespace censusAnalyser
         /// <summary>
         ///Method for sorting the state 
         /// </summary>
-        public static JArray SortingJsonBasedOnKey(string jsonFilePath, string key)
+        public static JArray sortingJsonBasedOnKey(string jsonFilePath, string key)
         {
             string jsonFile = File.ReadAllText(jsonFilePath);
             JArray CensusArray = JArray.Parse(jsonFile);
@@ -188,7 +188,7 @@ namespace censusAnalyser
         /// <param name="jsonPath"></param>
         /// <param name="key"></param>
         /// <returns></returns>
-        public static string RetriveFirstDataOnKey(string jsonPath, string key)
+        public static string retriveFirstDataOnKey(string jsonPath, string key)
         {
             string jsonFileText = File.ReadAllText(jsonPath);
             JArray jArray = JArray.Parse(jsonFileText);
@@ -202,7 +202,7 @@ namespace censusAnalyser
         /// <param name="jsonPath"></param>
         /// <param name="key"></param>
         /// <returns></returns>
-        public static string RetriveLastDataOnKey(string jsonPath, string key)
+        public static string retriveLastDataOnKey(string jsonPath, string key)
         {
             string jsonFileText = File.ReadAllText(jsonPath);
             JArray jArray = JArray.Parse(jsonFileText);
@@ -215,7 +215,7 @@ namespace censusAnalyser
         /// <param name="jsonPath"></param>
         /// <param name="key"></param>
         /// <returns></returns>
-        public static JArray SortJsonBasedOnKeyAndValueIsNumber(string jsonPath, string key)
+        public static JArray sortJsonBasedOnKeyAndValueIsNumber(string jsonPath, string key)
         {
             string jsonFile = File.ReadAllText(jsonPath);
             //parsing a json file
@@ -245,11 +245,11 @@ namespace censusAnalyser
         static void Main(string[] args)
         {
             CensusAnalyser CensusAnalyse = new CensusAnalyser();
-            CensusAnalyse.ReadRecordCsvFile(filePath1, in_delimeter1, in_header1);
-            CensusAnalyse.CountRecordsUSingMap(record);
-            SortingJsonBasedOnKey(jsonFilePath1, key1);
-            RetriveFirstDataOnKey(jsonPath1, key1);
-            RetriveLastDataOnKey(jsonPath1, key1);
+            CensusAnalyse.readRecordCsvFile(filePath1, in_delimeter1, in_header1);
+            CensusAnalyse.countRecordsUSingMap(record);
+            sortingJsonBasedOnKey(jsonFilePath1, key1);
+            retriveFirstDataOnKey(jsonPath1, key1);
+            retriveLastDataOnKey(jsonPath1, key1);
         }
     }
 }

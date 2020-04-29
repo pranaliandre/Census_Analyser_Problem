@@ -146,7 +146,7 @@ namespace censusAnalyserTest
         public void givenStateCensusCSVAndJsonPathToAddIntoJSon_AfterSorting_ReturnFirstState()
         {
             string expected = "Andhra Pradesh";
-            string actual = JSONCensus.ReturnFirstDataAfterSortingCsvFileWriteInJson(STATE_CENSUS_CSV_FILE_PATH, JSON_PATH_STATE_CENSUS, "State");
+            string actual = JSONCensus.returnFirstDataAfterSortingCsvFileWriteInJson(STATE_CENSUS_CSV_FILE_PATH, JSON_PATH_STATE_CENSUS, "State");
             Assert.AreEqual(expected, actual);
         }
         /// <summary>
@@ -156,7 +156,7 @@ namespace censusAnalyserTest
         public void givenStatusCensusCSVAndJsonPathToAddIntoJSon_AfterSorting_ReturnLastState()
         {
             string expected = "West Bengal";
-            string lastValue = JSONCensus.ReturnLastDataAfterSortingCsvFileWriteInJson(STATE_CENSUS_CSV_FILE_PATH, JSON_PATH_STATE_CENSUS, "State");  Assert.AreEqual(expected, lastValue);
+            string lastValue = JSONCensus.returnLastDataAfterSortingCsvFileWriteInJson(STATE_CENSUS_CSV_FILE_PATH, JSON_PATH_STATE_CENSUS, "State");  Assert.AreEqual(expected, lastValue);
         }
         /// <summary>
         ///  Test for StateCensuscsv and json path to add into json after sorting return return first state.
@@ -165,7 +165,7 @@ namespace censusAnalyserTest
         public void givenStateCodeCSVAndJsonPathToAddIntoJSon_AfterSorting_ReturnFirstState()
         {
             string expected = "AD";
-            string actual = JSONCensus.ReturnFirstDataAfterSortingCsvFileWriteInJson(STATE_CODE_CSV_FILE_PATH, JSON_PATH_STATE_CODE, "StateCode");
+            string actual = JSONCensus.returnFirstDataAfterSortingCsvFileWriteInJson(STATE_CODE_CSV_FILE_PATH, JSON_PATH_STATE_CODE, "StateCode");
             Assert.AreEqual(expected, actual);
         }
         /// <summary>
@@ -175,7 +175,7 @@ namespace censusAnalyserTest
         public void givenStatusCodeCSVAndJsonPathToAddIntoJSon_AfterSorting_ReturnLastState()
         {
             string expected = "WB";
-            string lastValue = JSONCensus.ReturnLastDataAfterSortingCsvFileWriteInJson(STATE_CODE_CSV_FILE_PATH, JSON_PATH_STATE_CODE, "StateCode");
+            string lastValue = JSONCensus.returnLastDataAfterSortingCsvFileWriteInJson(STATE_CODE_CSV_FILE_PATH, JSON_PATH_STATE_CODE, "StateCode");
             Assert.AreEqual(expected, lastValue);
         }
         /// <summary>
@@ -185,18 +185,28 @@ namespace censusAnalyserTest
         public void givenCsvStateCensusAndJson_ToSortFromMostPopulousToLeast_ReturnTheNumberOfSatetesSorted()
         {
             string expected="199812341";
-            string population = JSONCensus.ReturnDataNumberOfStatesSortCSVFileAndWriteInJson(STATE_CENSUS_CSV_FILE_PATH, JSON_PATH_STATE_CENSUS, "Population");
+            string population = JSONCensus.returnDataNumberOfStatesSortCSVFileAndWriteInJson(STATE_CENSUS_CSV_FILE_PATH, JSON_PATH_STATE_CENSUS, "Population");
             Assert.AreEqual(expected, population);
         }
         /// <summary>
-        /// Givens the state of the CSV and json path to add into json after sorting on density return last.
+        /// Test for Givens the state of the CSV and json path to add into json after sorting on density return largest value.
         /// </summary> 
         [Test]
         public void givenCSVAndJsonPathToAddIntoJSon_AfterSortingOnDensity_ReturnlastState()
         {
             string expected = "1102";
-            string lastValue = JSONCensus.ReturnDataNumberOfStatesSortCSVFileAndWriteInJson(STATE_CENSUS_CSV_FILE_PATH, JSON_PATH_STATE_CENSUS, "DensityPerSqKm");
+            string lastValue = JSONCensus.returnDataNumberOfStatesSortCSVFileAndWriteInJson(STATE_CENSUS_CSV_FILE_PATH, JSON_PATH_STATE_CENSUS, "DensityPerSqKm");
             Assert.AreEqual(expected, lastValue);
+        }
+        /// <summary>
+        /// Test for Givens the state of the CSV and json path to add into json after sorting on density return smallest area.
+        /// </summary>
+        [Test]
+        public void givenCSVAndJsonPathToAddIntoJSon_AfterSortingOnArea_ReturnlastState()
+        {
+            string expected = "3702";
+            string firstValue = JSONCensus.returnDataNumberOfStatesFirstDataSortCSVFileAndWriteInJson(STATE_CENSUS_CSV_FILE_PATH, JSON_PATH_STATE_CENSUS, "AreaInSqKm");
+            Assert.AreEqual(expected, firstValue);
         }
     }
 }
