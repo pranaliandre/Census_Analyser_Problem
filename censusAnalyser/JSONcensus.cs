@@ -1,10 +1,15 @@
-﻿using System.Text;
+﻿///-----------------------------------------------------------------
+///   Class:       JSONCensus
+///   Description: CSV to JSON Conversion functions
+///   Author:      Pranali Andre                   Date: 28/4/2020
+///-----------------------------------------------------------------
+using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.IO;
 using ChoETL;
 namespace censusAnalyser
-{ 
+{
     public class JSONCensus
     {
         /// <summary>
@@ -21,7 +26,7 @@ namespace censusAnalyser
             using (var reader = ChoCSVReader.LoadText(readFile)
                                             .WithFirstLineHeader())
             {
-                using (var writer = new ChoJSONWriter(stringbuilder))writer.Write(reader);
+                using (var writer = new ChoJSONWriter(stringbuilder)) writer.Write(reader);
             }
             File.WriteAllText(jsonFilepath, stringbuilder.ToString());
             JArray array = CensusAnalyser.SortingJsonBasedOnKey(jsonFilepath, key);
@@ -44,7 +49,7 @@ namespace censusAnalyser
             using (var reader = ChoCSVReader.LoadText(readFile)
                                             .WithFirstLineHeader())
             {
-                using(var writer = new ChoJSONWriter(stringbuilder))writer.Write(reader);
+                using (var writer = new ChoJSONWriter(stringbuilder)) writer.Write(reader);
             }
             File.WriteAllText(jsonFilepath, stringbuilder.ToString());
             JArray array = CensusAnalyser.SortingJsonBasedOnKey(jsonFilepath, key);
@@ -53,27 +58,28 @@ namespace censusAnalyser
             File.WriteAllText(jsonFilepath, jsonArray);
             return CensusAnalyser.RetriveLastDataOnKey(jsonFilepath, key);
         }
-        /// <summary>
-        /// Method to population of number of states 
-        /// </summary>
-        /// <param name="filePath"></param>
-        /// <param name="jsonFilepath"></param>
-        /// <param name="key"></param>
-        /// <returns></returns>
-        public static int ReturnNumberOfStatesAfterSortingCsvFileWriteInJson(string filePath, string jsonFilepath, string key)
+       /// <summary>
+       /// Method to sorting the most population
+       /// </summary>
+       /// <param name="filePath"></param>
+       /// <param name="jsonFilepath"></param>
+       /// <param name="key"></param>
+       /// <returns></returns>
+        public static string ReturnDataNumberOfStatesSortCSVFileAndWriteInJson(string filePath, string jsonFilepath, string key)
         {
             string readFile = File.ReadAllText(filePath);
             StringBuilder stringbuilder = new StringBuilder();
             using (var reader = ChoCSVReader.LoadText(readFile)
-                .WithFirstLineHeader()
-                )
+                                            .WithFirstLineHeader())
             {
-                using (var writer = new ChoJSONWriter(stringbuilder))
-                    writer.Write(reader);
+                using (var writer = new ChoJSONWriter(stringbuilder))writer.Write(reader);
             }
             File.WriteAllText(jsonFilepath, stringbuilder.ToString());
-            int populationNumberOfStates = CensusAnalyser.SortingJsonBasedNumberOfStates(jsonFilepath, key);
-            return populationNumberOfStates;
+            JArray array = CensusAnalyser.SortJsonBasedOnKeyAndValueIsNumber(jsonFilepath, key);
+            var jsonArray = JsonConvert.SerializeObject(array, Formatting.Indented);
+            File.WriteAllText(jsonFilepath, jsonArray);
+
+            return CensusAnalyser.RetriveLastDataOnKey(jsonFilepath, key);
         }
     }
-}   
+}

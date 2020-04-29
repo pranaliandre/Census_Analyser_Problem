@@ -1,4 +1,10 @@
-﻿using System;
+﻿///-----------------------------------------------------------------
+///   Class:       StateCodeCensusDAO
+///   Description: method for StateCode File
+///   Author:      Pranali                   Date: 28/4/2020
+///-----------------------------------------------------------------
+
+using System;
 namespace censusAnalyser
 {
     public class StateCodeAnalyserDao : ICSVBuilder
@@ -17,11 +23,11 @@ namespace censusAnalyser
         /// <param name="stateCodeFilePath"></param>
         /// <param name="delimeter"></param>
         /// <param name="header"></param>
-        public StateCodeAnalyserDao(string stateCodeFilePath, char delimeter,string[] header)
+        public StateCodeAnalyserDao(string stateCodeFilePath, char delimeter, string[] header)
         {
-           this.stateCodeFilePath = stateCodeFilePath;
-           this.delimeter = delimeter;
-           this.header = header;
+            this.stateCodeFilePath = stateCodeFilePath;
+            this.delimeter = delimeter;
+            this.header = header;
         }
         /// <summary>
         /// Delegate is a reference type variable that hold the refenence to a method 

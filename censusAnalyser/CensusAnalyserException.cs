@@ -1,5 +1,10 @@
-﻿using System;
-using censusAnalyser;
+﻿///-----------------------------------------------------------------
+///   Class:     CensusAnalyserException
+///   Description: Class Census Analyser Exception for throw Exception
+///   Author:      Pranali Andre                   Date: 28/4/2020
+///-----------------------------------------------------------------
+
+using System;
 namespace censusAnalyser
 {
     public class CensusAnalyserException:Exception

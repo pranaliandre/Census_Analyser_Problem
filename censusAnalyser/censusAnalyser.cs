@@ -1,4 +1,9 @@
-﻿using System;
+﻿///--------------------------------------------------------------------------------------------
+///   Class:       censusAnalyser
+///   Description: All methods are created for delimiter,count,header,Records,Sorting etc.
+///   Author:      Pranali Andre                   Date: 27/4/2020
+///--------------------------------------------------------------------------------------------
+using System;
 using System.IO;
 using LumenWorks.Framework.IO.Csv;
 using System.Collections;
@@ -140,7 +145,7 @@ namespace censusAnalyser
             Dictionary<int, Dictionary<string, string>> map = new Dictionary<int, Dictionary<string, string>>();
             string[] key = records[0].Split(',');
             for (int i = 1; i < records.Length; i++)
-            { 
+            {
                 string[] value = records[i].Split(',');
                 Dictionary<string, string> maping = new Dictionary<string, string>()
                 {
@@ -176,7 +181,7 @@ namespace censusAnalyser
             }
             return CensusArray;
         }
-       
+
         /// <summary>
         /// Method to retrive the first state data
         /// </summary>
@@ -205,28 +210,30 @@ namespace censusAnalyser
             return lastValue;
         }
         /// <summary>
-        ///Method for sorting the state census population
+        /// 
         /// </summary>
-        public static int SortingJsonBasedNumberOfStates(string jsonFilePath, string key)
+        /// <param name="jsonPath"></param>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public static JArray SortJsonBasedOnKeyAndValueIsNumber(string jsonPath, string key)
         {
-            int count = 0;
-            string jsonFile = File.ReadAllText(jsonFilePath);
+            string jsonFile = File.ReadAllText(jsonPath);
+            //parsing a json file
             JArray CensusArray = JArray.Parse(jsonFile);
-            //bubble sort
+            //sorting in sorting in ascending order
             for (int i = 0; i < CensusArray.Count - 1; i++)
             {
                 for (int j = 0; j < CensusArray.Count - i - 1; j++)
                 {
-                    if (CensusArray[j][key].ToString().CompareTo(CensusArray[j + 1][key].ToString()) > 0)
+                    if ((int)CensusArray[j][key] > (int)CensusArray[j + 1][key])
                     {
                         var temp = CensusArray[j + 1];
                         CensusArray[j + 1] = CensusArray[j];
                         CensusArray[j] = temp;
-                        count++;
                     }
                 }
             }
-            return count;
+            return CensusArray;
         }
         public static string filePath1;
         public static char in_delimeter1;
@@ -242,7 +249,7 @@ namespace censusAnalyser
             CensusAnalyse.CountRecordsUSingMap(record);
             SortingJsonBasedOnKey(jsonFilePath1, key1);
             RetriveFirstDataOnKey(jsonPath1, key1);
-            RetriveLastDataOnKey(jsonPath1,key1);
+            RetriveLastDataOnKey(jsonPath1, key1);
         }
     }
 }

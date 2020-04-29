@@ -1,4 +1,9 @@
-﻿using System;
+﻿///--------------------------------------------------------------------
+///   Class:      ICSVBuilder
+///   Description: Created a Interface for Classes
+///   Author:      Pranali Andre                   Date: 28/4/2020
+///--------------------------------------------------------------------
+using System;
 using System.Collections.Generic;
 using System.Text;
 using censusAnalyser;
