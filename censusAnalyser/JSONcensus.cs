@@ -1,7 +1,7 @@
 ﻿///-----------------------------------------------------------------
 ///   Class:       JSONCensus
 ///   Description: CSV to JSON Conversion functions
-///   Author:      Pranali Andre                   Date: 28/4/2020
+///   Author:      Pranali Andre                   Date: 29/4/2020
 ///-----------------------------------------------------------------
 using System.Text;
 using Newtonsoft.Json;
@@ -19,7 +19,7 @@ namespace censusAnalyser
         /// <param name="jsonFilepath"></param>
         /// <param name="key"></param>
         /// <returns></returns>
-        public static string returnFirstDataAfterSortingCsvFileWriteInJson(string filePath, string jsonFilepath, string key)
+        public static string ReturnFirstDataAfterSortingCsvFileWriteInJson(string filePath, string jsonFilepath, string key)
         {
             string readFile = File.ReadAllText(filePath);
             StringBuilder stringbuilder = new StringBuilder();
@@ -29,11 +29,11 @@ namespace censusAnalyser
                 using (var writer = new ChoJSONWriter(stringbuilder)) writer.Write(reader);
             }
             File.WriteAllText(jsonFilepath, stringbuilder.ToString());
-            JArray array = CensusAnalyser.sortingJsonBasedOnKey(jsonFilepath, key);
+            JArray array = CensusAnalyser.SortingJsonBasedOnKey(jsonFilepath, key);
             //serialize JSON to a string and then write string to a file
             var jsonArray = JsonConvert.SerializeObject(array, Formatting.Indented);
             File.WriteAllText(jsonFilepath, jsonArray);
-            return CensusAnalyser.retriveFirstDataOnKey(jsonFilepath, key);
+            return CensusAnalyser.RetriveFirstDataOnKey(jsonFilepath, key);
         }
         /// <summary>
         /// Method to write the last state data using json
@@ -42,7 +42,7 @@ namespace censusAnalyser
         /// <param name="jsonFilepath"></param>
         /// <param name="key"></param>
         /// <returns></returns>
-        public static string returnLastDataAfterSortingCsvFileWriteInJson(string filePath, string jsonFilepath, string key)
+        public static string ReturnLastDataAfterSortingCsvFileWriteInJson(string filePath, string jsonFilepath, string key)
         {
             string readFile = File.ReadAllText(filePath);
             StringBuilder stringbuilder = new StringBuilder();
@@ -52,11 +52,11 @@ namespace censusAnalyser
                 using (var writer = new ChoJSONWriter(stringbuilder)) writer.Write(reader);
             }
             File.WriteAllText(jsonFilepath, stringbuilder.ToString());
-            JArray array = CensusAnalyser.sortingJsonBasedOnKey(jsonFilepath, key);
+            JArray array = CensusAnalyser.SortingJsonBasedOnKey(jsonFilepath, key);
             // serialize JSON to a string and then write string to a file
             var jsonArray = JsonConvert.SerializeObject(array, Formatting.Indented);
             File.WriteAllText(jsonFilepath, jsonArray);
-            return CensusAnalyser.retriveLastDataOnKey(jsonFilepath, key);
+            return CensusAnalyser.RetriveLastDataOnKey(jsonFilepath, key);
         }
        /// <summary>
        /// Method to sorting the most population ,density largest value
@@ -65,7 +65,7 @@ namespace censusAnalyser
        /// <param name="jsonFilepath"></param>
        /// <param name="key"></param>
        /// <returns></returns>
-        public static string returnDataNumberOfStatesSortCSVFileAndWriteInJson(string filePath, string jsonFilepath, string key)
+        public static string ReturnDataNumberOfStatesSortCSVFileAndWriteInJson(string filePath, string jsonFilepath, string key)
         {
             string readFile = File.ReadAllText(filePath);
             StringBuilder stringbuilder = new StringBuilder();
@@ -75,11 +75,11 @@ namespace censusAnalyser
                 using (var writer = new ChoJSONWriter(stringbuilder))writer.Write(reader);
             }
             File.WriteAllText(jsonFilepath, stringbuilder.ToString());
-            JArray array = CensusAnalyser.sortJsonBasedOnKeyAndValueIsNumber(jsonFilepath, key);
+            JArray array = CensusAnalyser.SortJsonBasedOnKeyAndValueIsNumber(jsonFilepath, key);
             var jsonArray = JsonConvert.SerializeObject(array, Formatting.Indented);
             File.WriteAllText(jsonFilepath, jsonArray);
 
-            return CensusAnalyser.retriveLastDataOnKey(jsonFilepath, key);
+            return CensusAnalyser.RetriveLastDataOnKey(jsonFilepath, key);
         }
         /// <summary>
         /// Method to sorting the area of small area value
@@ -88,7 +88,7 @@ namespace censusAnalyser
         /// <param name="jsonFilepath"></param>
         /// <param name="key"></param>
         /// <returns></returns>
-        public static string returnDataNumberOfStatesFirstDataSortCSVFileAndWriteInJson(string filePath, string jsonFilepath, string key)
+        public static string ReturnDataNumberOfStatesFirstDataSortCSVFileAndWriteInJson(string filePath, string jsonFilepath, string key)
         {
             string readFile = File.ReadAllText(filePath);
             StringBuilder stringbuilder = new StringBuilder();
@@ -98,11 +98,11 @@ namespace censusAnalyser
                 using (var writer = new ChoJSONWriter(stringbuilder)) writer.Write(reader);
             }
             File.WriteAllText(jsonFilepath, stringbuilder.ToString());
-            JArray array = CensusAnalyser.sortJsonBasedOnKeyAndValueIsNumber(jsonFilepath, key);
+            JArray array = CensusAnalyser.SortJsonBasedOnKeyAndValueIsNumber(jsonFilepath, key);
             var jsonArray = JsonConvert.SerializeObject(array, Formatting.Indented);
             File.WriteAllText(jsonFilepath, jsonArray);
 
-            return CensusAnalyser.retriveFirstDataOnKey(jsonFilepath, key);
+            return CensusAnalyser.RetriveFirstDataOnKey(jsonFilepath, key);
         }
     }
 }

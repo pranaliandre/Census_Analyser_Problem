@@ -1,52 +1,49 @@
-﻿///-----------------------------------------------------------------
-///   Class:       StateCodeCensusDAO
-///   Description: method for StateCode File
-///   Author:      Pranali                   Date: 29/4/2020
-///-----------------------------------------------------------------
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using censusAnalyser;
 namespace censusAnalyser
 {
-    public class StateCodeAnalyserDao : ICSVBuilder
-    {
+    class UsCensusAnalyserDao
+    {/*
         /// <summary>
         /// variable
         /// </summary>
-        public string stateCodeFilePath;
+        public string usCensusFilePath;
         public char delimeter;
         public string[] header;
-        public string filepath;
-        public StateCodeAnalyserDao() { }
+        public UsCensusAnalyserDao() { }
         /// <summary>
         ///  Parameterized constructor for different variables.
         /// </summary>
-        /// <param name="stateCodeFilePath"></param>
+        /// <param name="usCensusFilePath"></param>
         /// <param name="delimeter"></param>
         /// <param name="header"></param>
-        public StateCodeAnalyserDao(string stateCodeFilePath, char delimeter, string[] header)
+        public UsCensusAnalyserDao(string usCensusFilePath, char delimeter, string[] header)
         {
-            this.stateCodeFilePath = stateCodeFilePath;
+            this.usCensusFilePath = usCensusFilePath;
             this.delimeter = delimeter;
             this.header = header;
         }
         /// <summary>
         /// Delegate is a reference type variable that hold the refenence to a method 
         /// </summary>
-        /// <param name="stateCodeFilePath"></param>
+        /// <param name="usCensusFilePath"></param>
         /// <param name="delimeter"></param>
         /// <param name="header"></param>
         /// <returns></returns>
-        public delegate object CsvStateCodeDao(string stateCodeFilePath, char delimeter, string[] header);
+        public delegate object CsvUscensusDao(string usCensusFilePath, char delimeter, string[] header);
         /// <summary>
         /// Method to read the record state code csv file and check the file type,file path, delimeter and header .
         /// </summary>
-        /// <param name="stateCodeFilePath"></param>
+        /// <param name="usCensusFilePath"></param>
         /// <param name="delimeter"></param>
         /// <param name="header"></param>
         /// <returns></returns>
-        public static object CsvStateCodeReadRecord(string stateCodeFilePath, char delimeter, string[] header)
+        public static object CsvUsCensusReadRecord(string usCensusFilePath, char delimeter, string[] header)
         {
-            CensusAnalyser stateCodePathObject = new CensusAnalyser(stateCodeFilePath);
-            object returnObject = stateCodePathObject.ReadRecordCsvFile(stateCodeFilePath, delimeter, header);
+            CensusAnalyser usCensusPathObject = new CensusAnalyser(usCensusFilePath);
+            object returnObject = usCensusPathObject.ReadRecordCsvFile(usCensusFilePath, delimeter, header);
             return returnObject;
         }
 
@@ -58,7 +55,7 @@ namespace censusAnalyser
         {
             throw new NotImplementedException();
         }
-        /*object ICSVBuilder.CsvUSCensusReadRecord(string USCensusDataFilePath, char delimeter, string[] header)
+        object ICSVBuilder.CsvUSCensusReadRecord(string USCensusDataFilePath, char delimeter, string[] header)
         {
             throw new NotImplementedException();
         }*/

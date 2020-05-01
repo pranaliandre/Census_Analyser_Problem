@@ -1,7 +1,7 @@
 ﻿///-----------------------------------------------------------------
 ///   Class:       StateCensusAnalyserDAO
 ///   Description: method for StateCensusData File
-///   Author:      Pranali Andre                   Date: 28/4/2020
+///   Author:      Pranali Andre                   Date: 29/4/2020
 ///-----------------------------------------------------------------
 using System;
 namespace censusAnalyser
@@ -37,7 +37,7 @@ namespace censusAnalyser
         /// <param name="delimeter"></param>
         /// <param name="header"></param>
         /// <returns></returns>
-        public delegate object csvStateCensusDao(string stateCensusFilePath, char delimeter, string[] header);
+        public delegate object CsvStateCensusDao(string stateCensusFilePath, char delimeter, string[] header);
         /// <summary>
         /// Method to read the record state census csv file and check the file type,file path, delimeter and header .
         /// </summary>
@@ -45,19 +45,23 @@ namespace censusAnalyser
         /// <param name="delimeter"></param>
         /// <param name="header"></param>
         /// <returns></returns>
-        public static object csvStateCensusReadRecord(string stateCensusFilePath, char delimeter, string[] header)
+        public static object CsvStateCensusReadRecord(string stateCensusFilePath, char delimeter, string[] header)
         {
             CensusAnalyser stateCensusPathObject = new CensusAnalyser(stateCensusFilePath);
-            object returnObject = stateCensusPathObject.readRecordCsvFile(stateCensusFilePath, delimeter, header);
+            object returnObject = stateCensusPathObject.ReadRecordCsvFile(stateCensusFilePath, delimeter, header);
             return returnObject;
         }
-        object ICSVBuilder.csvStateCensusReadRecord(string stateCensusFilePath, char delimeter, string[] header)
+        object ICSVBuilder.CsvStateCensusReadRecord(string stateCensusFilePath, char delimeter, string[] header)
         {
             throw new NotImplementedException();
         }
-        object ICSVBuilder.csvStateCodeReadRecord(string stateCodeFilePath, char delimeter, string[] header)
+        object ICSVBuilder.CsvStateCodeReadRecord(string stateCodeFilePath, char delimeter, string[] header)
         {
             throw new NotImplementedException();
         }
+        /*object ICSVBuilder.CsvUSCensusReadRecord(string USCensusDataFilePath, char delimeter, string[] header)
+        {
+            throw new NotImplementedException();
+        }*/
     }
 }

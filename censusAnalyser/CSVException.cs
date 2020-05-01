@@ -1,7 +1,7 @@
 ﻿///-----------------------------------------------------------------
 ///   Class:     CSVException
 ///   Description: CSVException for throw Exception
-///   Author:      Pranali Andre                   Date: 28/4/2020
+///   Author:      Pranali Andre                   Date: 29/4/2020
 ///-----------------------------------------------------------------
 
 using System;
