@@ -4,8 +4,8 @@ using System.Text;
 using censusAnalyser;
 namespace censusAnalyser
 {
-    class UsCensusAnalyserDao
-    {/*
+    public class UsCensusAnalyserDao : ICSVBuilder
+    {
         /// <summary>
         /// variable
         /// </summary>
@@ -58,6 +58,6 @@ namespace censusAnalyser
         object ICSVBuilder.CsvUSCensusReadRecord(string USCensusDataFilePath, char delimeter, string[] header)
         {
             throw new NotImplementedException();
-        }*/
+        }
     }
 }

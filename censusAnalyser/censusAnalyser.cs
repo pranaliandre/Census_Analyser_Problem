@@ -20,6 +20,7 @@ namespace censusAnalyser
         public string filePath;
         public string[] header;
         public char delimeter;
+        // public string actualPath;
         /// <summary>
         /// Default constructor for invoking object.
         /// </summary>
@@ -32,9 +33,8 @@ namespace censusAnalyser
         {
             this.filePath = filePath;
         }
-
         /// <summary>
-        /// Method to checking record for two csv file
+        /// Method to checking record for three csv file
         /// </summary>
         /// <param name="filePath"></param>
         /// <param name="in_delimeter"></param>
@@ -49,14 +49,12 @@ namespace censusAnalyser
                 {
                     throw new CensusAnalyserException("File Type Incorrect", CensusAnalyserException.Exception_type.File_Type_Incorrect);
                 }
-                //If file path incorrect throw exception
-                //if (!filePath.Contains(actualPath))
-                if (filePath != "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCensusData.csv" && filePath != "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCode.csv")
+                if (filePath != "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCensusData.csv" && filePath != "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCode.csv" && filePath!= "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/USCensusData.csv")
                 {
                     throw new CensusAnalyserException("File Not Found", CensusAnalyserException.Exception_type.File_Not_Found);
                 }
                 //Read record one by one in csv file
-               CsvReader  streamReader= new CsvReader(new StreamReader(filePath));
+                CsvReader  streamReader= new CsvReader(new StreamReader(filePath));
                 {
                     int fieldCount = streamReader.FieldCount;
                     //get fields of files

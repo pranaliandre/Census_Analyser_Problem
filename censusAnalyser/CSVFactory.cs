@@ -35,16 +35,16 @@ namespace censusAnalyser
             CsvStateCodeDao getCSVStateCode = new CsvStateCodeDao(StateCodeAnalyserDao.CsvStateCodeReadRecord);
             return getCSVStateCode;
         }
-        //public static UsCensusAnalyserDao InstanceOfUsCensusAnalyser()
-        //{
-          //  return new UsCensusAnalyserDao();
-       // }
-       // public static CsvUscensusDao DelegateofUSCensusAnalyser()
-        //{
-          //  UsCensusAnalyserDao usCensus = InstanceOfUsCensusAnalyser();
-           // CsvUscensusDao getCsvUsCensus = new CsvUscensusDao(UsCensusAnalyserDao.CsvUsCensusReadRecord);
-            //return getCsvUsCensus;        
-        //}
+        public static UsCensusAnalyserDao InstanceOfUsCensusAnalyser()
+        {
+            return new UsCensusAnalyserDao();
+        }
+        public static CsvUscensusDao DelegateofUSCensusAnalyser()
+        {
+            UsCensusAnalyserDao usCensus = InstanceOfUsCensusAnalyser();
+            CsvUscensusDao getCsvUsCensus = new CsvUscensusDao(UsCensusAnalyserDao.CsvUsCensusReadRecord);
+            return getCsvUsCensus;        
+        }
        
         public static StateCensusAnalyserDao InstanceOfStateCensusAnalyser()
         {

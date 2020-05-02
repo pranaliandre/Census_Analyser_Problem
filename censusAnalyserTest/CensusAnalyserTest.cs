@@ -7,16 +7,18 @@ using censusAnalyser;
 using NUnit.Framework;
 using static censusAnalyser.StateCensusAnalyserDao;
 using static censusAnalyser.StateCodeAnalyserDao;
+using static censusAnalyser.UsCensusAnalyserDao;
+
 namespace censusAnalyserTest
 {
     public class Tests
     {
-        CensusAnalyser census = new CensusAnalyser();
         readonly CsvStateCensusDao csvStateCensus = CSVFactory.DelegateOfStateCensusAnalyser();
         readonly CsvStateCodeDao csvStatesCode = CSVFactory.DelegateofStatecodeAnalyser();
+        readonly CsvUscensusDao csvUsCensus = CSVFactory.DelegateofUSCensusAnalyser();
         public string STATE_CENSUS_CSV_FILE_PATH = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCensusData.csv";
         public string STATE_CODE_CSV_FILE_PATH = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCode.csv";
-        ///public string US_CENSUS_DATA_FILE_PATH = @"C:\Users\intel\source\repos\censusAnalyser\censusAnalyser\USCensusData.csv";
+        public string US_CENSUS_DATA_FILE_PATH = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/USCensusData.csv";
         public string STATE_CENSUS_WRONG_FILE_PATH = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/CensusData.csv";
         public string STATE_CODE_WRONG_CSV_FILE_PATH = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCodecsv.csv";
         public string STATE_CENSUS_WRONG_FILE_TYPE = "C:/Users/intel/source/repos/censusAnalyser/censusAnalyser/StateCensusData.txt";
@@ -43,13 +45,7 @@ namespace censusAnalyserTest
             object actual = csvStateCensus(STATE_CENSUS_CSV_FILE_PATH, DELIMETER, HEADER_STATE_CENSUS);
             Assert.AreEqual(expected, actual);
         }
-        /*[Test]
-        public void GivenUSCensusCSVFileReturnsCorrectRecords()
-        {
-            int expected = 51;
-            object actual = census.ReadRecordCsvFile(US_CENSUS_DATA_FILE_PATH, DELIMETER, HEADER_US_CENSUS);
-            Assert.AreEqual(expected, actual);
-        }*/
+        
         /// <summary>
         /// Test for Given state census CSV File if incorrect Returns a custom Exception
         /// </summary>
@@ -217,6 +213,13 @@ namespace censusAnalyserTest
             string expected = "3702";
             string firstValue = JSONCensus.ReturnDataNumberOfStatesFirstDataSortCSVFileAndWriteInJson(STATE_CENSUS_CSV_FILE_PATH, JSON_PATH_STATE_CENSUS, "AreaInSqKm");
             Assert.AreEqual(expected, firstValue);
+        }
+        [Test]
+        public void GivenUSCensusCSVFileReturnsCorrectRecords()
+        {
+            int expected = 51;
+            object actual = csvUsCensus(US_CENSUS_DATA_FILE_PATH, DELIMETER, HEADER_US_CENSUS);
+            Assert.AreEqual(expected, actual);
         }
     }
 }

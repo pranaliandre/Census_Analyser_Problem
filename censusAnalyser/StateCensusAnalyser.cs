@@ -59,9 +59,9 @@ namespace censusAnalyser
         {
             throw new NotImplementedException();
         }
-        /*object ICSVBuilder.CsvUSCensusReadRecord(string USCensusDataFilePath, char delimeter, string[] header)
+        object ICSVBuilder.CsvUSCensusReadRecord(string USCensusDataFilePath, char delimeter, string[] header)
         {
             throw new NotImplementedException();
-        }*/
+        }
     }
 }

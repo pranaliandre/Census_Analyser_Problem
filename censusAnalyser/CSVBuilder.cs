@@ -16,6 +16,6 @@ namespace censusAnalyser
     {
         public object CsvStateCensusReadRecord(string stateCensusFilePath, char delimeter, string[] header);
         public object CsvStateCodeReadRecord(string stateCodeFilePath, char delimeter, string[] header);
-        //public object CsvUSCensusReadRecord(string USCensusDataFilePath, char delimeter, string[] header);
+        public object CsvUSCensusReadRecord(string USCensusDataFilePath, char delimeter, string[] header);
     }
 }
