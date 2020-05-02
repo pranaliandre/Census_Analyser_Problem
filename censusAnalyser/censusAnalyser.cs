@@ -17,9 +17,9 @@ namespace censusAnalyser
         /// variable
         /// </summary>
         public int numberOfRecord = 0;
-        public string filePath;
-        public string[] header;
-        public char delimeter;
+        public string filePath { get; set; }
+        public string[] header { get; set; }
+        public char delimeter { get; set; }
         // public string actualPath;
         /// <summary>
         /// Default constructor for invoking object.

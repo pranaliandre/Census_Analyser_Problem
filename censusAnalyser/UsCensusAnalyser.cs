@@ -14,9 +14,9 @@ namespace censusAnalyser
         /// <summary>
         /// variable
         /// </summary>
-        public string usCensusFilePath;
-        public char delimeter;
-        public string[] header;
+        public string usCensusFilePath { get; set; }
+        public char delimeter { get; set; }
+        public string[] header { get; set; }
         public UsCensusAnalyserDao() { }
         /// <summary>
         ///  Parameterized constructor for different variables.

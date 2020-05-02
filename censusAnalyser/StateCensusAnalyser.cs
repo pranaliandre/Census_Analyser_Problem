@@ -17,10 +17,10 @@ namespace censusAnalyser
         /// variable
         /// </summary>
         /// 
-        public string stateCensusFilePath;
-        public string[] header;
-        public char delimeter;
-        public string filepath;
+        public string stateCensusFilePath { get; set; }
+        public char delimeter { get; set; }
+        public string[] header { get; set; }
+        public string filepath { get; set; }
         public StateCensusAnalyserDao() { }
         /// <summary></summary>
         /// <summary>

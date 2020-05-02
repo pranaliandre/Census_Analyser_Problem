@@ -12,10 +12,10 @@ namespace censusAnalyser
         /// <summary>
         /// variable
         /// </summary>
-        public string stateCodeFilePath;
-        public char delimeter;
-        public string[] header;
-        public string filepath;
+        public string stateCodeFilePath{ get; set; }
+        public char delimeter{ get; set; }
+        public string[] header{ get; set; }
+        public string filepath { get; set; }
         public StateCodeAnalyserDao() { }
         /// <summary>
         ///  Parameterized constructor for different variables.
