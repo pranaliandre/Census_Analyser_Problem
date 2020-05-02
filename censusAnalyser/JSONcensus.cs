@@ -1,7 +1,7 @@
 ﻿///-----------------------------------------------------------------
 ///   Class:       JSONCensus
 ///   Description: CSV to JSON Conversion functions
-///   Author:      Pranali Andre                   Date: 29/4/2020
+///   Author:      Pranali Andre                   Date: 2/5/2020
 ///-----------------------------------------------------------------
 using System.Text;
 using Newtonsoft.Json;

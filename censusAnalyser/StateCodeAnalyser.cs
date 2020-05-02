@@ -1,7 +1,7 @@
 ﻿///-----------------------------------------------------------------
 ///   Class:       StateCodeCensusDAO
 ///   Description: method for StateCode File
-///   Author:      Pranali                   Date: 29/4/2020
+///   Author:      Pranali Andre        Date: 2/5/2020
 ///-----------------------------------------------------------------
 using Newtonsoft.Json.Linq;
 using System;
@@ -50,7 +50,6 @@ namespace censusAnalyser
             object returnObject = stateCodePathObject.ReadRecordCsvFile(stateCodeFilePath, delimeter, header);
             return returnObject;
         }
-        public delegate object CsvStateCodeDaoU(string jsonFilePath, string key);
         object ICSVBuilder.CsvStateCensusReadRecord(string stateCensusFilePath, char delimeter, string[] header)
         {
             throw new NotImplementedException();

@@ -1,4 +1,9 @@
-﻿using System;
+﻿///-----------------------------------------------------------------
+///   Class:       UsCensusAnalyserDAO
+///   Description: method for UsCensusCode File
+///   Author:      Pranali Andre        Date: 2/5/2020
+///-----------------------------------------------------------------
+using System;
 using System.Collections.Generic;
 using System.Text;
 using censusAnalyser;
@@ -46,7 +51,6 @@ namespace censusAnalyser
             object returnObject = usCensusPathObject.ReadRecordCsvFile(usCensusFilePath, delimeter, header);
             return returnObject;
         }
-
         object ICSVBuilder.CsvStateCensusReadRecord(string stateCensusFilePath, char delimeter, string[] header)
         {
             throw new NotImplementedException();

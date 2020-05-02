@@ -1,14 +1,13 @@
 ///-----------------------------------------------------------------
 ///   Class:       Tests
 ///   Description: Test cases for  India Census data and USCensusData
-///   Author:      Pranali Andre                   Date: 29/4/2020
+///   Author:      Pranali Andre                   Date: 2/5/2020
 ///------------------------------------------------------------------
 using censusAnalyser;
 using NUnit.Framework;
 using static censusAnalyser.StateCensusAnalyserDao;
 using static censusAnalyser.StateCodeAnalyserDao;
 using static censusAnalyser.UsCensusAnalyserDao;
-
 namespace censusAnalyserTest
 {
     public class Tests
@@ -349,6 +348,22 @@ namespace censusAnalyserTest
                 throw new CensusAnalyserException(exception.Message, CensusAnalyserException.Exception_type.File_Not_Found);
             }
         }
-
+        /// <summary>
+        ///  Test case for Given the CSV sta census and json to sort from most populous to least return the number of states sorted.
+        /// </summary>
+        [Test]
+        public void GivenCsvUSCensusAndJson_ToSortFromMostPopulousToLeast_ReturnTheNumberOfSatetesSorted()
+        {
+            try
+            {
+                string expected = "37253956";
+                string population = JSONCensus.ReturnDataNumberOfStatesSortCSVFileAndWriteInJson(US_CENSUS_DATA_FILE_PATH, JSON_PATH_STATE_CENSUS, "Population");
+                Assert.AreEqual(expected, population);
+            }
+            catch (CensusAnalyserException exception)
+            {
+                throw new CensusAnalyserException(exception.Message, CensusAnalyserException.Exception_type.File_Not_Found);
+            }
+        }
     }
 }
