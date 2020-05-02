@@ -12,6 +12,7 @@ namespace censusAnalyser
 {
     public class JSONCensus
     {
+        public JSONCensus() { }
         /// <summary>
         /// Method to write the First state data using json
         /// </summary>

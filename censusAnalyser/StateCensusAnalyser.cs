@@ -1,9 +1,14 @@
 ﻿///-----------------------------------------------------------------
 ///   Class:       StateCensusAnalyserDAO
-///   Description: method for StateCensusData File
+///   Description: Method for StateCensusData File
 ///   Author:      Pranali Andre                   Date: 29/4/2020
 ///-----------------------------------------------------------------
+using Newtonsoft.Json.Linq;
 using System;
+using System.IO;
+using System.Text;
+using Newtonsoft.Json;
+using ChoETL;
 namespace censusAnalyser
 {
     public class StateCensusAnalyserDao : ICSVBuilder
@@ -51,6 +56,7 @@ namespace censusAnalyser
             object returnObject = stateCensusPathObject.ReadRecordCsvFile(stateCensusFilePath, delimeter, header);
             return returnObject;
         }
+      
         object ICSVBuilder.CsvStateCensusReadRecord(string stateCensusFilePath, char delimeter, string[] header)
         {
             throw new NotImplementedException();

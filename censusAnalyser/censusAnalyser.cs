@@ -114,6 +114,17 @@ namespace censusAnalyser
             }
             return numberOfRecord;
         }
+
+        internal string ReturnFirstDataAfterSortingCsvFileWriteInJson(string jsonFilePath, string key)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal object ReturnFirstDataAfterSortingCsvFileWriteInJson(string stateCensusFilePath, string jsonFilePath, string key)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// Method to compare two string arrays
         /// </summary>

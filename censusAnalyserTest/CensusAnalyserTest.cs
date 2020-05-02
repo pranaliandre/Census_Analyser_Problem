@@ -41,9 +41,16 @@ namespace censusAnalyserTest
         [Test]
         public void GivenStateCensusCSVFileReturnsCorrectRecords()
         {
-            int expected = 29;
-            object actual = csvStateCensus(STATE_CENSUS_CSV_FILE_PATH, DELIMETER, HEADER_STATE_CENSUS);
-            Assert.AreEqual(expected, actual);
+            try
+            {
+                int expected = 29;
+                object actual = csvStateCensus(STATE_CENSUS_CSV_FILE_PATH, DELIMETER, HEADER_STATE_CENSUS);
+                Assert.AreEqual(expected, actual);
+            }
+            catch(CensusAnalyserException exception)
+            {
+                throw new CensusAnalyserException(exception.Message, CensusAnalyserException.Exception_type.File_Not_Found);
+            }
         }
         
         /// <summary>
@@ -52,9 +59,16 @@ namespace censusAnalyserTest
         [Test]
         public void GivenStateCensusData_WhenWrongFilePath_ShouldThrowException()
         {
-            object expected = "File Not Found";
-            object actual = csvStateCensus(STATE_CENSUS_WRONG_FILE_PATH, DELIMETER, HEADER_STATE_CENSUS);
-            Assert.AreEqual(expected, actual);
+            try
+            {
+                object expected = "File Not Found";
+                object actual = csvStateCensus(STATE_CENSUS_WRONG_FILE_PATH, DELIMETER, HEADER_STATE_CENSUS);
+                Assert.AreEqual(expected, actual);
+            }
+            catch (CensusAnalyserException exception)
+            {
+                throw new CensusAnalyserException(exception.Message, CensusAnalyserException.Exception_type.File_Not_Found);
+            }
         }
 
         /// <summary>
@@ -64,9 +78,16 @@ namespace censusAnalyserTest
 
         public void GivenStateCensusCsvFile_WhenIncorrectType_ShouldThrowException()
         {
-            object expected = "File Type Incorrect";
-            object actual = csvStateCensus(STATE_CENSUS_WRONG_FILE_TYPE, DELIMETER, HEADER_STATE_CENSUS);
-            Assert.AreEqual(expected, actual);
+            try
+            {
+                object expected = "File Type Incorrect";
+                object actual = csvStateCensus(STATE_CENSUS_WRONG_FILE_TYPE, DELIMETER, HEADER_STATE_CENSUS);
+                Assert.AreEqual(expected, actual);
+            }
+            catch (CensusAnalyserException exception)
+            {
+                throw new CensusAnalyserException(exception.Message, CensusAnalyserException.Exception_type.File_Type_Incorrect);
+            }
         }
 
         /// <summary>
@@ -75,9 +96,16 @@ namespace censusAnalyserTest
         [Test]
         public void GivenStateCensusCsvFile_WhenIncorrectDelimiter_ShouldThrowException()
         {
-            object expected = "Delimeter incorrect";
-            object actual = csvStateCensus(STATE_CENSUS_CSV_FILE_PATH, INCORRECT_DELIMETER, HEADER_STATE_CENSUS);
-            Assert.AreEqual(expected, actual);
+            try
+            {
+                object expected = "Delimeter incorrect";
+                object actual = csvStateCensus(STATE_CENSUS_CSV_FILE_PATH, INCORRECT_DELIMETER, HEADER_STATE_CENSUS);
+                Assert.AreEqual(expected, actual);
+            }
+            catch(CensusAnalyserException exception)
+            {
+                throw new CensusAnalyserException(exception.Message, CensusAnalyserException.Exception_type.Delimeter_Incorrect);
+            }
         }
         /// <summary>
         /// Test for given state census csv file Header incorrect return a custom exception
@@ -85,9 +113,16 @@ namespace censusAnalyserTest
         [Test]
         public void GivenStateCensusCsvFile_WhenIncorrectHeader_ShouldThrowException()
         {
-            object expected = "Header incorrect";
-            object actual = csvStateCensus(STATE_CENSUS_CSV_FILE_PATH, DELIMETER, INCORRECT_HEADER_STATE_CENSUS);
-            Assert.AreEqual(expected, actual);
+            try
+            {
+                object expected = "Header incorrect";
+                object actual = csvStateCensus(STATE_CENSUS_CSV_FILE_PATH, DELIMETER, INCORRECT_HEADER_STATE_CENSUS);
+                Assert.AreEqual(expected, actual);
+            }
+            catch(CensusAnalyserException exception)
+            {
+                throw new CensusAnalyserException(exception.Message, CensusAnalyserException.Exception_type.Header_Incorrect);
+            }
         }
 
         /// <summary>
@@ -96,9 +131,16 @@ namespace censusAnalyserTest
         [Test]
         public void GivenStateCodeCSVFileReturnsCorrectRecords()
         {
-            object expected = 37;
-            object actual = csvStatesCode(STATE_CODE_CSV_FILE_PATH, DELIMETER, HEADER_STATE_CODE);
-            Assert.AreEqual(expected, actual);
+            try
+            {
+                object expected = 37;
+                object actual = csvStatesCode(STATE_CODE_CSV_FILE_PATH, DELIMETER, HEADER_STATE_CODE);
+                Assert.AreEqual(expected, actual);
+            }
+            catch (CensusAnalyserException exception)
+            {
+                throw new CensusAnalyserException(exception.Message, CensusAnalyserException.Exception_type.File_Not_Found);
+            }
         }
 
         /// <summary>
@@ -107,10 +149,16 @@ namespace censusAnalyserTest
         [Test]
         public void GivenStateCode_WhenWrongFilePath_ShouldThrowException()
         {
-
-            object expected = "File Not Found";
-            object actual = csvStatesCode(STATE_CODE_WRONG_CSV_FILE_PATH, DELIMETER, HEADER_STATE_CODE);
-            Assert.AreEqual(expected, actual);
+            try
+            {
+                object expected = "File Not Found";
+                object actual = csvStatesCode(STATE_CODE_WRONG_CSV_FILE_PATH, DELIMETER, HEADER_STATE_CODE);
+                Assert.AreEqual(expected, actual);
+            }
+            catch (CensusAnalyserException exception)
+            {
+                throw new CensusAnalyserException(exception.Message, CensusAnalyserException.Exception_type.File_Not_Found);
+            }
         }
 
         /// <summary>
@@ -119,9 +167,16 @@ namespace censusAnalyserTest
         [Test]
         public void GivenStateCodeCsvFile_WhenIncorrectType_ShouldThrowException()
         {
-            object expected = "File Type Incorrect";
-            object actual = csvStatesCode(STATE_CODE_WRONG_FILE_TYPE, DELIMETER, HEADER_STATE_CODE);
-            Assert.AreEqual(expected, actual);
+            try
+            {
+                object expected = "File Type Incorrect";
+                object actual = csvStatesCode(STATE_CODE_WRONG_FILE_TYPE, DELIMETER, HEADER_STATE_CODE);
+                Assert.AreEqual(expected, actual);
+            }
+            catch (CensusAnalyserException exception)
+            {
+                throw new CensusAnalyserException(exception.Message, CensusAnalyserException.Exception_type.File_Type_Incorrect);
+            }
         }
 
         /// <summary>
@@ -130,9 +185,16 @@ namespace censusAnalyserTest
         [Test]
         public void GivenStateCodeCsvFile_WhenIncorrectDelimiter_ShouldThrowException()
         {
-            object expected = "Delimeter incorrect";
-            object actual = csvStatesCode(STATE_CODE_CSV_FILE_PATH, INCORRECT_DELIMETER, HEADER_STATE_CODE);
-            Assert.AreEqual(expected, actual);
+            try
+            {
+                object expected = "Delimeter incorrect";
+                object actual = csvStatesCode(STATE_CODE_CSV_FILE_PATH, INCORRECT_DELIMETER, HEADER_STATE_CODE);
+                Assert.AreEqual(expected, actual);
+            }
+            catch (CensusAnalyserException exception)
+            {
+                throw new CensusAnalyserException(exception.Message, CensusAnalyserException.Exception_type.Delimeter_Incorrect);
+            }
         }
         /// <summary>
         /// Test for given state code file Header incorrect return a custom exception
@@ -140,20 +202,33 @@ namespace censusAnalyserTest
         [Test]
         public void GivenStateCodeCsvFile_WhenIncorrectHeader_ShouldThrowException()
         {
-            object expected = "Header incorrect";
-            object actual = csvStatesCode(STATE_CODE_CSV_FILE_PATH, DELIMETER, INCORRECT_HEADER_STATE_CODE);
-            Assert.AreEqual(expected, actual);
+            try
+            {
+                object expected = "Header incorrect";
+                object actual = csvStatesCode(STATE_CODE_CSV_FILE_PATH, DELIMETER, INCORRECT_HEADER_STATE_CODE);
+                Assert.AreEqual(expected, actual);
+            }
+            catch (CensusAnalyserException exception)
+            {
+                throw new CensusAnalyserException(exception.Message, CensusAnalyserException.Exception_type.Header_Incorrect);
+            }
         }
-
         /// <summary>
         ///  Test for StateCensus csv and json path to add into json after sorting return return first state.
         /// </summary>
         [Test]
         public void GivenStateCensusCSVAndJsonPathToAddIntoJSon_AfterSorting_ReturnFirstState()
         {
-            string expected = "Andhra Pradesh";
-            string actual = JSONCensus.ReturnFirstDataAfterSortingCsvFileWriteInJson(STATE_CENSUS_CSV_FILE_PATH, JSON_PATH_STATE_CENSUS, "State");
-            Assert.AreEqual(expected, actual);
+            try
+            {
+                string expected = "Andhra Pradesh";
+                string actual = JSONCensus.ReturnFirstDataAfterSortingCsvFileWriteInJson(STATE_CENSUS_CSV_FILE_PATH, JSON_PATH_STATE_CENSUS, "State");
+                Assert.AreEqual(expected, actual);
+            }
+            catch (CensusAnalyserException exception)
+            {
+                throw new CensusAnalyserException(exception.Message, CensusAnalyserException.Exception_type.File_Not_Found);
+            }
         }
         /// <summary>
         /// Test for StateCensus csv and json path to add into json after sorting return return last state.
@@ -161,8 +236,16 @@ namespace censusAnalyserTest
         [Test]
         public void GivenStatusCensusCSVAndJsonPathToAddIntoJSon_AfterSorting_ReturnLastState()
         {
-            string expected = "West Bengal";
-            string lastValue = JSONCensus.ReturnLastDataAfterSortingCsvFileWriteInJson(STATE_CENSUS_CSV_FILE_PATH, JSON_PATH_STATE_CENSUS, "State");  Assert.AreEqual(expected, lastValue);
+            try
+            {
+                string expected = "West Bengal";
+                string lastValue = JSONCensus.ReturnLastDataAfterSortingCsvFileWriteInJson(STATE_CENSUS_CSV_FILE_PATH, JSON_PATH_STATE_CENSUS, "State"); Assert.AreEqual(expected, lastValue);
+                Assert.AreEqual(expected, lastValue);
+            }
+            catch (CensusAnalyserException exception)
+            {
+                throw new CensusAnalyserException(exception.Message, CensusAnalyserException.Exception_type.File_Not_Found);
+            }
         }
         /// <summary>
         ///  Test for StateCensuscsv and json path to add into json after sorting return return first state.
@@ -170,9 +253,16 @@ namespace censusAnalyserTest
         [Test]
         public void GivenStateCodeCSVAndJsonPathToAddIntoJSon_AfterSorting_ReturnFirstState()
         {
-            string expected = "AD";
-            string actual = JSONCensus.ReturnFirstDataAfterSortingCsvFileWriteInJson(STATE_CODE_CSV_FILE_PATH, JSON_PATH_STATE_CODE, "StateCode");
-            Assert.AreEqual(expected, actual);
+            try
+            {
+                string expected = "AD";
+                string actual = JSONCensus.ReturnFirstDataAfterSortingCsvFileWriteInJson(STATE_CODE_CSV_FILE_PATH, JSON_PATH_STATE_CODE, "StateCode");
+                Assert.AreEqual(expected, actual);
+            }
+            catch (CensusAnalyserException exception)
+            {
+                throw new CensusAnalyserException(exception.Message, CensusAnalyserException.Exception_type.File_Not_Found);
+            }
         }
         /// <summary>
         /// Test for StateCensuscsv and json path to add into json after sorting return return last state.
@@ -180,9 +270,16 @@ namespace censusAnalyserTest
         [Test]
         public void GivenStatusCodeCSVAndJsonPathToAddIntoJSon_AfterSorting_ReturnLastState()
         {
-            string expected = "WB";
-            string lastValue = JSONCensus.ReturnLastDataAfterSortingCsvFileWriteInJson(STATE_CODE_CSV_FILE_PATH, JSON_PATH_STATE_CODE, "StateCode");
-            Assert.AreEqual(expected, lastValue);
+            try
+            {
+                string expected = "WB";
+                string lastValue = JSONCensus.ReturnLastDataAfterSortingCsvFileWriteInJson(STATE_CODE_CSV_FILE_PATH, JSON_PATH_STATE_CODE, "StateCode");
+                Assert.AreEqual(expected, lastValue);
+            }
+            catch (CensusAnalyserException exception)
+            {
+                throw new CensusAnalyserException(exception.Message, CensusAnalyserException.Exception_type.File_Not_Found);
+            }
         }
         /// <summary>
         ///  Test case for Given the CSV state census and json to sort from most populous to least return the number of states sorted.
@@ -190,9 +287,16 @@ namespace censusAnalyserTest
         [Test]
         public void GivenCsvStateCensusAndJson_ToSortFromMostPopulousToLeast_ReturnTheNumberOfSatetesSorted()
         {
-            string expected="199812341";
-            string population = JSONCensus.ReturnDataNumberOfStatesSortCSVFileAndWriteInJson(STATE_CENSUS_CSV_FILE_PATH, JSON_PATH_STATE_CENSUS, "Population");
-            Assert.AreEqual(expected, population);
+            try
+            { 
+                string expected = "199812341";
+                string population = JSONCensus.ReturnDataNumberOfStatesSortCSVFileAndWriteInJson(STATE_CENSUS_CSV_FILE_PATH, JSON_PATH_STATE_CENSUS, "Population");
+                Assert.AreEqual(expected, population);
+            }
+            catch (CensusAnalyserException exception)
+            {
+                throw new CensusAnalyserException(exception.Message, CensusAnalyserException.Exception_type.File_Not_Found);
+            }
         }
         /// <summary>
         /// Test for Givens the state of the CSV and json path to add into json after sorting on density return largest value.
@@ -200,9 +304,16 @@ namespace censusAnalyserTest
         [Test]
         public void GivenCSVAndJsonPathToAddIntoJSon_AfterSortingOnDensity_ReturnlastState()
         {
-            string expected = "1102";
-            string lastValue = JSONCensus.ReturnDataNumberOfStatesSortCSVFileAndWriteInJson(STATE_CENSUS_CSV_FILE_PATH, JSON_PATH_STATE_CENSUS, "DensityPerSqKm");
-            Assert.AreEqual(expected, lastValue);
+            try
+            {
+                string expected = "1102";
+                string lastValue = JSONCensus.ReturnDataNumberOfStatesSortCSVFileAndWriteInJson(STATE_CENSUS_CSV_FILE_PATH, JSON_PATH_STATE_CENSUS, "DensityPerSqKm");
+                Assert.AreEqual(expected, lastValue);
+            }
+            catch (CensusAnalyserException exception)
+            {
+                throw new CensusAnalyserException(exception.Message, CensusAnalyserException.Exception_type.File_Not_Found);
+            }
         }
         /// <summary>
         /// Test for Givens the state of the CSV and json path to add into json after sorting on density return smallest area.
@@ -210,16 +321,34 @@ namespace censusAnalyserTest
         [Test]
         public void GivenCSVAndJsonPathToAddIntoJSon_AfterSortingOnArea_ReturnlastState()
         {
-            string expected = "3702";
-            string firstValue = JSONCensus.ReturnDataNumberOfStatesFirstDataSortCSVFileAndWriteInJson(STATE_CENSUS_CSV_FILE_PATH, JSON_PATH_STATE_CENSUS, "AreaInSqKm");
-            Assert.AreEqual(expected, firstValue);
+            try
+            {
+                string expected = "3702";
+                string firstValue = JSONCensus.ReturnDataNumberOfStatesFirstDataSortCSVFileAndWriteInJson(STATE_CENSUS_CSV_FILE_PATH, JSON_PATH_STATE_CENSUS, "AreaInSqKm");
+                Assert.AreEqual(expected, firstValue);
+            }
+            catch (CensusAnalyserException exception)
+            {
+                throw new CensusAnalyserException(exception.Message, CensusAnalyserException.Exception_type.File_Not_Found);
+            }
         }
+        /// <summary>
+        /// Test case for check number of records
+        /// </summary>
         [Test]
         public void GivenUSCensusCSVFileReturnsCorrectRecords()
         {
-            int expected = 51;
-            object actual = csvUsCensus(US_CENSUS_DATA_FILE_PATH, DELIMETER, HEADER_US_CENSUS);
-            Assert.AreEqual(expected, actual);
+            try
+            {
+                int expected = 51;
+                object actual = csvUsCensus(US_CENSUS_DATA_FILE_PATH, DELIMETER, HEADER_US_CENSUS);
+                Assert.AreEqual(expected, actual);
+            }
+            catch (CensusAnalyserException exception)
+            {
+                throw new CensusAnalyserException(exception.Message, CensusAnalyserException.Exception_type.File_Not_Found);
+            }
         }
+
     }
 }
