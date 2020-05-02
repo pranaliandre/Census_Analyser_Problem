@@ -349,7 +349,7 @@ namespace censusAnalyserTest
             }
         }
         /// <summary>
-        ///  Test case for Given the CSV sta census and json to sort from most populous to least return the number of states sorted.
+        ///  Test case for Given the CSV sta census and json to sort from most populous to last return the number of states sorted.
         /// </summary>
         [Test]
         public void GivenCsvUSCensusAndJson_ToSortFromMostPopulousToLeast_ReturnTheNumberOfSatetesSorted()
