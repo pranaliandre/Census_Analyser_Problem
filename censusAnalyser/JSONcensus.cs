@@ -1,7 +1,7 @@
 ﻿///-----------------------------------------------------------------
 ///   Class:       JSONCensus
-///   Description: CSV to JSON Conversion functions
-///   Author:      Pranali Andre                   Date: 2/5/2020
+///   Description: CSV to JSON Conversion functions.
+///   Author:      Pranali Andre                   Date: 4/5/2020
 ///-----------------------------------------------------------------
 using System.Text;
 using Newtonsoft.Json;
@@ -12,7 +12,6 @@ namespace censusAnalyser
 {
     public class JSONCensus
     {
-        public JSONCensus() { }
         /// <summary>
         /// Method to write the First state data using json
         /// </summary>
@@ -24,10 +23,10 @@ namespace censusAnalyser
         {
             string readFile = File.ReadAllText(filePath);
             StringBuilder stringbuilder = new StringBuilder();
-            using (var reader = ChoCSVReader.LoadText(readFile)
+            using (var loadText = ChoCSVReader.LoadText(readFile)
                                             .WithFirstLineHeader())
             {
-                using (var writer = new ChoJSONWriter(stringbuilder)) writer.Write(reader);
+                using (var writer = new ChoJSONWriter(stringbuilder)) writer.Write(loadText);
             }
             File.WriteAllText(jsonFilepath, stringbuilder.ToString());
             JArray array = CensusAnalyser.SortingJsonBasedOnKey(jsonFilepath, key);
@@ -47,10 +46,10 @@ namespace censusAnalyser
         {
             string readFile = File.ReadAllText(filePath);
             StringBuilder stringbuilder = new StringBuilder();
-            using (var reader = ChoCSVReader.LoadText(readFile)
+            using (var loadText = ChoCSVReader.LoadText(readFile)
                                             .WithFirstLineHeader())
             {
-                using (var writer = new ChoJSONWriter(stringbuilder)) writer.Write(reader);
+                using (var writer = new ChoJSONWriter(stringbuilder)) writer.Write(loadText);
             }
             File.WriteAllText(jsonFilepath, stringbuilder.ToString());
             JArray array = CensusAnalyser.SortingJsonBasedOnKey(jsonFilepath, key);
@@ -70,16 +69,15 @@ namespace censusAnalyser
         {
             string readFile = File.ReadAllText(filePath);
             StringBuilder stringbuilder = new StringBuilder();
-            using (var reader = ChoCSVReader.LoadText(readFile)
+            using (var loadText = ChoCSVReader.LoadText(readFile)
                                             .WithFirstLineHeader())
             {
-                using (var writer = new ChoJSONWriter(stringbuilder))writer.Write(reader);
+                using (var writer = new ChoJSONWriter(stringbuilder))writer.Write(loadText);
             }
             File.WriteAllText(jsonFilepath, stringbuilder.ToString());
             JArray array = CensusAnalyser.SortJsonBasedOnKeyAndValueIsNumber(jsonFilepath, key);
             var jsonArray = JsonConvert.SerializeObject(array, Formatting.Indented);
             File.WriteAllText(jsonFilepath, jsonArray);
-
             return CensusAnalyser.RetriveLastDataOnKey(jsonFilepath, key);
         }
         /// <summary>
@@ -93,16 +91,15 @@ namespace censusAnalyser
         {
             string readFile = File.ReadAllText(filePath);
             StringBuilder stringbuilder = new StringBuilder();
-            using (var reader = ChoCSVReader.LoadText(readFile)
+            using (var loadText = ChoCSVReader.LoadText(readFile)
                                             .WithFirstLineHeader())
             {
-                using (var writer = new ChoJSONWriter(stringbuilder)) writer.Write(reader);
+                using (var writer = new ChoJSONWriter(stringbuilder)) writer.Write(loadText);
             }
             File.WriteAllText(jsonFilepath, stringbuilder.ToString());
             JArray array = CensusAnalyser.SortJsonBasedOnKeyAndValueIsNumber(jsonFilepath, key);
             var jsonArray = JsonConvert.SerializeObject(array, Formatting.Indented);
             File.WriteAllText(jsonFilepath, jsonArray);
-
             return CensusAnalyser.RetriveFirstDataOnKey(jsonFilepath, key);
         }
     }

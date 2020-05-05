@@ -19,9 +19,7 @@ namespace censusAnalyser
         /// <summary>
         ///Variable
         /// </summary>
-        public string message;
-        
-
+        public string message;        
         /// <summary>
         /// parameterized constructor
         /// </summary>

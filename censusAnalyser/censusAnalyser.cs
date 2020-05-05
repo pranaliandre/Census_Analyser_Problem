@@ -115,7 +115,7 @@ namespace censusAnalyser
             return numberOfRecord;
         }
 
-        internal string ReturnFirstDataAfterSortingCsvFileWriteInJson(string jsonFilePath, string key)
+        /*internal string ReturnFirstDataAfterSortingCsvFileWriteInJson(string jsonFilePath, string key)
         {
             throw new NotImplementedException();
         }
@@ -123,7 +123,7 @@ namespace censusAnalyser
         internal object ReturnFirstDataAfterSortingCsvFileWriteInJson(string stateCensusFilePath, string jsonFilePath, string key)
         {
             throw new NotImplementedException();
-        }
+        }*/
 
         /// <summary>
         /// Method to compare two string arrays

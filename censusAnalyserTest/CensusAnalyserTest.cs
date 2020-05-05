@@ -1,6 +1,6 @@
 ///-----------------------------------------------------------------
 ///   Class:       Tests
-///   Description: Test cases for  India Census data and USCensusData
+///   Description: Test cases for India Census data and USCensusData
 ///   Author:      Pranali Andre                   Date: 2/5/2020
 ///------------------------------------------------------------------
 using censusAnalyser;
@@ -359,6 +359,40 @@ namespace censusAnalyserTest
                 string expected = "37253956";
                 string population = JSONCensus.ReturnDataNumberOfStatesSortCSVFileAndWriteInJson(US_CENSUS_DATA_FILE_PATH, JSON_PATH_STATE_CENSUS, "Population");
                 Assert.AreEqual(expected, population);
+            }
+            catch (CensusAnalyserException exception)
+            {
+                throw new CensusAnalyserException(exception.Message, CensusAnalyserException.Exception_type.File_Not_Found);
+            }
+        }
+        /// <summary>
+        /// Test case for Given the CSV sta census and json to sort from most populous density to last return the number of states sorted.
+        /// </summary>
+        [Test]
+        public void GivenCsvUsCensusAndJson_ToSortFromMostPopulationDensityToLeast_ReturnTheNumberOfSatetesSorted()
+        {
+            try
+            {
+                string expected = "3805.61";
+                string populationDensity = JSONCensus.ReturnDataNumberOfStatesSortCSVFileAndWriteInJson(US_CENSUS_DATA_FILE_PATH, JSON_PATH_STATE_CENSUS, "Population Density");
+                Assert.AreEqual(expected, populationDensity);
+            }
+            catch (CensusAnalyserException exception)
+            {
+                throw new CensusAnalyserException(exception.Message, CensusAnalyserException.Exception_type.File_Not_Found);
+            }
+        }
+        /// <summary>
+        /// Test case for Given the CSV status census and json to sort from most populous area to last return the number of states sorted.
+        /// </summary>
+        [Test]
+        public void GivenCsvUsCensusAndJson_ToSortFromMostPopulousAreaToLeast_ReturnTheNumberOfSatetesSorted()
+        {
+            try
+            {
+                string expected = "1723338.01";
+                string area = JSONCensus.ReturnDataNumberOfStatesSortCSVFileAndWriteInJson(US_CENSUS_DATA_FILE_PATH, JSON_PATH_STATE_CENSUS, "Total area");
+                Assert.AreEqual(expected, area);
             }
             catch (CensusAnalyserException exception)
             {
